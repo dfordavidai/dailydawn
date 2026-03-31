@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1357,54 +1354,6 @@
                         <div class="icon-box bg-amber-50 text-amber-600"><i class="fa-solid fa-robot"></i></div>
                         <span class="text-[10px] font-bold text-slate-500">AI COACH</span>
                     </button>
-                    <button onclick="navigateToPage('alarms')" class="service-tile">
-                        <div class="icon-box bg-orange-50 text-orange-600"><i class="fa-solid fa-bell"></i></div>
-                        <span class="text-[10px] font-bold text-slate-500">ALARMS</span>
-                    </button>
-                    <button onclick="navigateToPage('emotions')" class="service-tile">
-                        <div class="icon-box bg-pink-50 text-pink-600"><i class="fa-solid fa-heart-pulse"></i></div>
-                        <span class="text-[10px] font-bold text-slate-500">EMOTIONS</span>
-                    </button>
-                    <button onclick="navigateToPage('analytics')" class="service-tile">
-                        <div class="icon-box bg-blue-50 text-blue-600"><i class="fa-solid fa-chart-line"></i></div>
-                        <span class="text-[10px] font-bold text-slate-500">ANALYTICS</span>
-                    </button>
-                    <button onclick="navigateToPage('voice-journal')" class="service-tile">
-                        <div class="icon-box bg-purple-50 text-purple-600"><i class="fa-solid fa-microphone"></i></div>
-                        <span class="text-[10px] font-bold text-slate-500">VOICE</span>
-                    </button>
-                    <button onclick="navigateToPage('dailydawnapp')" class="service-tile">
-                        <div class="icon-box bg-sky-50 text-sky-600"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                        <span class="text-[10px] font-bold text-slate-500">ABOUT</span>
-                    </button>
-                    <button onclick="navigateToPage('export-data')" class="service-tile">
-                        <div class="icon-box bg-teal-50 text-teal-600"><i class="fa-solid fa-download"></i></div>
-                        <span class="text-[10px] font-bold text-slate-500">EXPORT</span>
-                    </button>
-                    <button onclick="navigateToPage('accountability')" class="service-tile">
-                        <div class="icon-box bg-green-50 text-green-600"><i class="fa-solid fa-user-check"></i></div>
-                        <span class="text-[10px] font-bold text-slate-500">PARTNER</span>
-                    </button>
-                    <button onclick="navigateToPage('shop')" class="service-tile">
-                        <div class="icon-box bg-amber-50 text-amber-600"><i class="fa-solid fa-shopping-bag"></i></div>
-                        <span class="text-[10px] font-bold text-slate-500">SHOP</span>
-                    </button>
-                    <button onclick="navigateToPage('earn')" class="service-tile">
-                        <div class="icon-box bg-emerald-50 text-emerald-600"><i class="fa-solid fa-naira-sign"></i></div>
-                        <span class="text-[10px] font-bold text-slate-500">EARN</span>
-                    </button>
-                    <button onclick="navigateToPage('testimonies')" class="service-tile">
-                        <div class="icon-box bg-yellow-50 text-yellow-600"><i class="fa-solid fa-comment-dots"></i></div>
-                        <span class="text-[10px] font-bold text-slate-500">TESTIMONIES</span>
-                    </button>
-                    <button onclick="navigateToPage('tracker')" class="service-tile">
-                        <div class="icon-box bg-violet-50 text-violet-600"><i class="fa-solid fa-chart-line"></i></div>
-                        <span class="text-[10px] font-bold text-slate-500">TRACKER</span>
-                    </button>
-                    <button onclick="resetData()" class="service-tile">
-                        <div class="icon-box bg-slate-50 text-slate-300"><i class="fa-solid fa-rotate-right"></i></div>
-                        <span class="text-[10px] font-bold text-slate-500">RESET</span>
-                    </button>
                 </div>
             </div>
 
@@ -2453,58 +2402,157 @@
             </div>
         </header>
 
-        <main class="p-5 -mt-6">
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-fire text-amber-500"></i>
-                    Power Principles
+        <div class="sticky top-0 z-10 bg-white px-5 pt-4 pb-2 -mt-6">
+            <div class="flex gap-2 overflow-x-auto pb-2" style="scrollbar-width: none;">
+                <button class="gym-tab active" onclick="switchMotivationTab('affirmations')" id="motivation-tab-affirmations"><i class="fa-solid fa-sun"></i> Affirmations</button>
+                <button class="gym-tab" onclick="switchMotivationTab('wins')" id="motivation-tab-wins"><i class="fa-solid fa-trophy"></i> My Wins</button>
+                <button class="gym-tab" onclick="switchMotivationTab('challenge')" id="motivation-tab-challenge"><i class="fa-solid fa-fire"></i> 30-Day</button>
+                <button class="gym-tab" onclick="switchMotivationTab('reframe')" id="motivation-tab-reframe"><i class="fa-solid fa-brain"></i> Reframe</button>
+            </div>
+        </div>
+
+        <main class="p-5">
+            <!-- Affirmations Tab -->
+            <div id="motivation-affirmations-content" class="gym-tab-content">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-sun text-amber-500"></i> Daily Affirmation</div>
+                    <div id="affirmation-card" style="background:linear-gradient(135deg,#1e293b,#0f172a);border-radius:1.25rem;padding:2rem;text-align:center;margin-bottom:1rem;">
+                        <p class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-3">TODAY'S AFFIRMATION</p>
+                        <p id="affirmation-text" class="text-white font-bold text-lg leading-relaxed" style="font-family:'Crimson Text',serif;font-size:1.3rem;font-style:italic;">"I am capable of achieving everything I set my mind to."</p>
+                        <div class="flex justify-center gap-3 mt-4">
+                            <button onclick="prevAffirmation()" class="w-10 h-10 rounded-full bg-slate-700 text-white flex items-center justify-center"><i class="fa-solid fa-chevron-left"></i></button>
+                            <button onclick="nextAffirmation()" class="w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center"><i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 mb-3 flex-wrap">
+                        <button onclick="filterAffirmations('all')" class="px-3 py-1 rounded-full text-xs font-bold bg-slate-900 text-white affirmation-filter-btn" data-cat="all">All</button>
+                        <button onclick="filterAffirmations('confidence')" class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 affirmation-filter-btn" data-cat="confidence">Confidence</button>
+                        <button onclick="filterAffirmations('wealth')" class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 affirmation-filter-btn" data-cat="wealth">Wealth</button>
+                        <button onclick="filterAffirmations('health')" class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 affirmation-filter-btn" data-cat="health">Health</button>
+                        <button onclick="filterAffirmations('faith')" class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 affirmation-filter-btn" data-cat="faith">Faith</button>
+                    </div>
+                    <button onclick="saveAffirmationAsFavorite()" class="btn-primary" style="background:linear-gradient(135deg,#f59e0b,#d97706);">❤️ Save as Favourite</button>
                 </div>
-                <div class="space-y-2 text-sm">
-                    <div class="tip-card">
-                        <p class="font-bold text-amber-800 mb-1">Growth Mindset</p>
-                        <p class="text-xs text-amber-900">Embrace challenges as opportunities to grow stronger.</p>
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-heart text-rose-500"></i> My Favourites</div>
+                    <div id="favourite-affirmations" class="space-y-2">
+                        <p class="text-sm text-slate-400 text-center py-2">Save affirmations you love</p>
                     </div>
-                    <div class="tip-card">
-                        <p class="font-bold text-amber-800 mb-1">Positive Self-Talk</p>
-                        <p class="text-xs text-amber-900">Speak to yourself the way you'd speak to someone you love.</p>
+                </div>
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-plus text-green-500"></i> Write Your Own</div>
+                    <textarea id="custom-affirmation-input" class="textarea-field" placeholder="Write a personal affirmation..." style="min-height:80px;"></textarea>
+                    <button onclick="saveCustomAffirmation()" class="btn-primary mt-3">Save Affirmation</button>
+                </div>
+            </div>
+
+            <!-- Wins Tab -->
+            <div id="motivation-wins-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-trophy text-yellow-500"></i> Win of the Day</div>
+                    <p class="text-sm text-slate-500 mb-3">Celebrate every victory — big or small. Your wins compound.</p>
+                    <select id="win-category" class="input-field mb-3">
+                        <option value="personal">🌱 Personal Growth</option>
+                        <option value="work">💼 Work / Career</option>
+                        <option value="health">💪 Health & Fitness</option>
+                        <option value="finance">💰 Financial</option>
+                        <option value="relationship">❤️ Relationships</option>
+                        <option value="spiritual">🙏 Spiritual</option>
+                    </select>
+                    <textarea id="mindset-wins" class="textarea-field" placeholder="What did I accomplish today? What am I proud of?" style="min-height:100px;"></textarea>
+                    <div class="flex gap-2 mt-3">
+                        <div class="flex-1">
+                            <label class="text-xs font-bold text-slate-500 block mb-1">Impact (1-5)</label>
+                            <input id="win-impact" type="number" min="1" max="5" class="input-field" placeholder="1-5">
+                        </div>
+                        <div class="flex-1">
+                            <label class="text-xs font-bold text-slate-500 block mb-1">Mood</label>
+                            <select id="win-mood" class="input-field">
+                                <option>😊 Happy</option>
+                                <option>🔥 Fired Up</option>
+                                <option>😌 Grateful</option>
+                                <option>💪 Strong</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="tip-card">
-                        <p class="font-bold text-amber-800 mb-1">Embrace Discomfort</p>
-                        <p class="text-xs text-amber-900">Growth happens outside your comfort zone.</p>
-                    </div>
-                    <div class="tip-card">
-                        <p class="font-bold text-amber-800 mb-1">Daily Affirmations</p>
-                        <p class="text-xs text-amber-900">What you repeatedly tell yourself, you become.</p>
+                    <button onclick="saveMindsetWin()" class="btn-primary mt-4">🏆 Log My Win</button>
+                </div>
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-list text-slate-500"></i> Win History</div>
+                    <div id="wins-history" class="space-y-3">
+                        <p class="text-sm text-slate-400 text-center py-2">Your wins will appear here</p>
                     </div>
                 </div>
             </div>
 
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-trophy text-yellow-500"></i>
-                    My Wins Today
+            <!-- 30-Day Challenge Tab -->
+            <div id="motivation-challenge-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-fire text-orange-500"></i> 30-Day Mindset Challenge</div>
+                    <div id="challenge-header" class="p-4 rounded-xl mb-4 text-center" style="background:linear-gradient(135deg,#1e293b,#0f172a);">
+                        <p class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-1">CURRENT CHALLENGE</p>
+                        <p id="active-challenge-name" class="text-white font-black text-lg">No Active Challenge</p>
+                        <p id="active-challenge-day" class="text-slate-400 text-sm mt-1">Start a challenge below</p>
+                        <div class="mt-3">
+                            <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                                <div id="challenge-progress-bar" class="h-full bg-amber-500 rounded-full transition-all" style="width:0%"></div>
+                            </div>
+                            <p id="challenge-progress-text" class="text-xs text-slate-400 mt-1">0 / 30 days</p>
+                        </div>
+                    </div>
+                    <div id="challenge-grid" class="grid gap-1 mb-4" style="grid-template-columns:repeat(10,1fr);"></div>
+                    <button id="check-in-challenge-btn" onclick="checkInChallenge()" class="btn-primary mb-3" style="display:none;">✅ Check In Today</button>
                 </div>
-                <p class="text-sm text-slate-600 mb-3">Celebrate your progress, no matter how small</p>
-                <textarea id="mindset-wins" class="textarea-field" placeholder="What did I accomplish today? What am I proud of?"></textarea>
-                <button onclick="saveMindsetWin()" class="btn-primary mt-4">Log Win</button>
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-list-check text-blue-500"></i> Choose a Challenge</div>
+                    <div class="space-y-3">
+                        <div class="p-3 bg-amber-50 border-2 border-amber-200 rounded-xl cursor-pointer" onclick="startMindsetChallenge('Morning Routine Master')">
+                            <p class="font-bold text-slate-800">🌅 Morning Routine Master</p>
+                            <p class="text-xs text-slate-500">Wake up early, journal, and affirm for 30 days</p>
+                        </div>
+                        <div class="p-3 bg-blue-50 border-2 border-blue-200 rounded-xl cursor-pointer" onclick="startMindsetChallenge('Gratitude Warrior')">
+                            <p class="font-bold text-slate-800">🙏 Gratitude Warrior</p>
+                            <p class="text-xs text-slate-500">Write 3 gratitudes every day for 30 days</p>
+                        </div>
+                        <div class="p-3 bg-green-50 border-2 border-green-200 rounded-xl cursor-pointer" onclick="startMindsetChallenge('No Complaining Challenge')">
+                            <p class="font-bold text-slate-800">🤐 No Complaining Challenge</p>
+                            <p class="text-xs text-slate-500">Go 30 days without complaining</p>
+                        </div>
+                        <div class="p-3 bg-purple-50 border-2 border-purple-200 rounded-xl cursor-pointer" onclick="startMindsetChallenge('Daily Affirmations')">
+                            <p class="font-bold text-slate-800">💬 Daily Affirmations</p>
+                            <p class="text-xs text-slate-500">Speak 5 affirmations aloud every morning</p>
+                        </div>
+                        <div class="p-3 bg-rose-50 border-2 border-rose-200 rounded-xl cursor-pointer" onclick="startMindsetChallenge('Digital Detox')">
+                            <p class="font-bold text-slate-800">📵 Digital Detox</p>
+                            <p class="text-xs text-slate-500">No social media for the first hour each day</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-mountain text-slate-600"></i>
-                    Challenges I'm Facing
+            <!-- Reframe Tab -->
+            <div id="motivation-reframe-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-brain text-purple-500"></i> Limiting Belief Reframe Tool</div>
+                    <p class="text-sm text-slate-500 mb-4">Identify what holds you back, then flip it into a power statement.</p>
+                    <label class="text-xs font-bold text-slate-600 block mb-1">The limiting belief I have:</label>
+                    <textarea id="limiting-belief" class="textarea-field mb-3" placeholder='e.g., "I am not good enough to succeed"' style="min-height:80px;"></textarea>
+                    <label class="text-xs font-bold text-slate-600 block mb-1">Where did this belief come from?</label>
+                    <input id="belief-origin" class="input-field mb-3" placeholder="e.g., My childhood, a failure, someone's words">
+                    <label class="text-xs font-bold text-slate-600 block mb-1">Evidence this belief is NOT true:</label>
+                    <textarea id="belief-evidence" class="textarea-field mb-3" placeholder="List times you succeeded, strengths you have..." style="min-height:80px;"></textarea>
+                    <label class="text-xs font-bold text-slate-600 block mb-1">Reframe — my new power statement:</label>
+                    <textarea id="belief-reframe" class="textarea-field mb-3" placeholder='e.g., "I am constantly growing and I have what it takes"' style="min-height:80px;"></textarea>
+                    <button onclick="saveBeliefReframe()" class="btn-primary">💪 Save My Reframe</button>
                 </div>
-                <textarea id="mindset-challenge" class="textarea-field" placeholder="What's difficult right now? How can I reframe it as growth?"></textarea>
-                <button onclick="saveMindsetChallenge()" class="btn-primary mt-4">Save Reflection</button>
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-bolt text-amber-500"></i> My Power Statements</div>
+                    <div id="reframes-list" class="space-y-3">
+                        <p class="text-sm text-slate-400 text-center py-2">Your reframed beliefs appear here</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-list text-slate-500"></i>
-                    Mindset Journal
-                </div>
-                <div id="mindset-entries"></div>
-            </div>
         </main>
         
         <button onclick="scrollToTop()" class="fab-button">
@@ -2531,168 +2579,157 @@
             </div>
         </header>
 
-        <main class="p-5 -mt-6">
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-flame text-orange-500"></i>
-                    Today's Habits
-                </div>
-                <div id="habits-today" class="space-y-3"></div>
-                <button onclick="showAddHabitForm()" class="btn-primary mt-4">+ Add New Habit</button>
+        <div class="sticky top-0 z-10 bg-white px-5 pt-4 pb-2 -mt-6">
+            <div class="flex gap-2 overflow-x-auto pb-2" style="scrollbar-width: none;">
+                <button class="gym-tab active" onclick="switchHabitsTab('today')" id="habits-tab-today"><i class="fa-solid fa-flame"></i> Today</button>
+                <button class="gym-tab" onclick="switchHabitsTab('heatmap')" id="habits-tab-heatmap"><i class="fa-solid fa-calendar-days"></i> Heatmap</button>
+                <button class="gym-tab" onclick="switchHabitsTab('replace')" id="habits-tab-replace"><i class="fa-solid fa-arrows-rotate"></i> Replace</button>
+                <button class="gym-tab" onclick="switchHabitsTab('character')" id="habits-tab-character"><i class="fa-solid fa-user-graduate"></i> Character</button>
+                <button class="gym-tab" onclick="switchHabitsTab('stats')" id="habits-tab-stats"><i class="fa-solid fa-chart-line"></i> Stats</button>
             </div>
+        </div>
 
-            <div class="content-card" id="add-habit-form" style="display: none;">
-                <div class="section-title">
-                    <i class="fa-solid fa-plus text-emerald-500"></i>
-                    Create Habit
-                </div>
-                <input id="habit-name" class="input-field mb-3" placeholder="Habit name (e.g., Drink 8 glasses of water)">
-                <select id="habit-frequency" class="input-field mb-3">
-                    <option value="daily">Daily</option>
-                    <option value="weekdays">Weekdays Only</option>
-                    <option value="weekly">Weekly</option>
-                </select>
-                <button onclick="saveNewHabit()" class="btn-primary">Create Habit</button>
-                <button onclick="hideAddHabitForm()" class="btn-primary mt-2" style="background: #e2e8f0; color: #64748b;">Cancel</button>
-            </div>
-
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-lightbulb text-yellow-500"></i>
-                    Habit Building Tips
-                </div>
-                <div class="space-y-2 text-sm">
-                    <div class="tip-card">
-                        <p class="font-bold text-amber-800 mb-1">Start Small</p>
-                        <p class="text-xs text-amber-900">Make it so easy you can't say no. Build from there.</p>
-                    </div>
-                    <div class="tip-card">
-                        <p class="font-bold text-amber-800 mb-1">Stack Habits</p>
-                        <p class="text-xs text-amber-900">After [existing habit], I will [new habit].</p>
-                    </div>
-                    <div class="tip-card">
-                        <p class="font-bold text-amber-800 mb-1">Track Visibly</p>
-                        <p class="text-xs text-amber-900">Don't break the chain. Each check builds momentum.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-user-graduate text-purple-500"></i>
-                    Character Development
-                </div>
-                <p class="text-sm text-slate-600 mb-4">Build lasting character traits</p>
-                
-                <div class="mb-4">
-                    <div class="flex gap-2 mb-3">
-                        <button onclick="switchCharacterTab('traits')" id="char-tab-traits" class="flex-1 py-2 px-4 rounded-lg font-bold text-sm bg-slate-900 text-white">
-                            My Traits
-                        </button>
-                        <button onclick="switchCharacterTab('assessment')" id="char-tab-assessment" class="flex-1 py-2 px-4 rounded-lg font-bold text-sm bg-slate-100 text-slate-700">
-                            Assessment
-                        </button>
-                    </div>
-
-                    <!-- Traits Tab -->
-                    <div id="character-traits-content">
-                        <div id="character-traits-list" class="space-y-3 mb-4">
-                            <!-- Character traits will be loaded here by JS -->
+        <main class="p-5">
+            <!-- Today Tab -->
+            <div id="habits-today-content" class="gym-tab-content">
+                <div class="content-card">
+                    <div class="flex justify-between items-center mb-3">
+                        <div class="section-title mb-0"><i class="fa-solid fa-flame text-orange-500"></i> Today's Habits</div>
+                        <div class="text-right">
+                            <p class="text-xs font-bold text-slate-500">COMPLETION</p>
+                            <p id="today-completion-pct" class="text-lg font-black text-emerald-600">0%</p>
                         </div>
-                        
-                        <button onclick="showAddCharacterTrait()" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-3 px-4 rounded-xl font-bold text-sm">
-                            <i class="fa-solid fa-plus"></i> Add Character Goal
-                        </button>
                     </div>
+                    <div class="goal-progress-bar mb-4">
+                        <div id="today-habits-progress" class="goal-progress-fill" style="width:0%"></div>
+                    </div>
+                    <div id="habits-today" class="space-y-3"></div>
+                    <button onclick="showAddHabitForm()" class="btn-primary mt-4">+ Add New Habit</button>
+                </div>
+                <div class="content-card" id="add-habit-form" style="display: none;">
+                    <div class="section-title"><i class="fa-solid fa-plus text-emerald-500"></i> Create Habit</div>
+                    <input id="habit-name" class="input-field mb-3" placeholder="Habit name (e.g., Drink 8 glasses of water)">
+                    <select id="habit-time" class="input-field mb-3">
+                        <option value="morning">🌅 Morning</option>
+                        <option value="afternoon">☀️ Afternoon</option>
+                        <option value="evening">🌙 Evening</option>
+                        <option value="anytime">⏰ Anytime</option>
+                    </select>
+                    <select id="habit-frequency" class="input-field mb-3">
+                        <option value="daily">Daily</option>
+                        <option value="weekdays">Weekdays Only</option>
+                        <option value="weekly">Weekly</option>
+                    </select>
+                    <select id="habit-category-new" class="input-field mb-3">
+                        <option value="health">💪 Health</option>
+                        <option value="mindset">🧠 Mindset</option>
+                        <option value="spiritual">🙏 Spiritual</option>
+                        <option value="finance">💰 Finance</option>
+                        <option value="social">❤️ Social</option>
+                        <option value="learning">📚 Learning</option>
+                    </select>
+                    <button onclick="saveNewHabit()" class="btn-primary">Create Habit</button>
+                    <button onclick="hideAddHabitForm()" class="btn-primary mt-2" style="background: #e2e8f0; color: #64748b;">Cancel</button>
+                </div>
+            </div>
 
-                    <!-- Assessment Tab -->
-                    <div id="character-assessment-content" style="display: none;">
-                        <div class="mb-4">
-                            <h3 class="font-bold text-sm text-slate-800 mb-3">Weekly Self-Assessment</h3>
-                            <div class="space-y-3">
-                                <div>
-                                    <label class="text-xs font-bold text-slate-600 block mb-1">How would you rate your growth this week? (1-10)</label>
-                                    <input type="number" id="assess-growth" min="1" max="10" class="input-field" placeholder="1-10">
+            <!-- Heatmap Tab -->
+            <div id="habits-heatmap-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-calendar-days text-indigo-500"></i> Weekly Habit Heatmap</div>
+                    <p class="text-xs text-slate-500 mb-4">Darker = more habits completed that day</p>
+                    <div id="habit-heatmap-grid" class="mb-4"></div>
+                    <div class="flex items-center gap-2 justify-end">
+                        <p class="text-xs text-slate-500">Less</p>
+                        <div class="w-4 h-4 rounded" style="background:#e2e8f0"></div>
+                        <div class="w-4 h-4 rounded" style="background:#a7f3d0"></div>
+                        <div class="w-4 h-4 rounded" style="background:#34d399"></div>
+                        <div class="w-4 h-4 rounded" style="background:#059669"></div>
+                        <p class="text-xs text-slate-500">More</p>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-fire text-orange-500"></i> Streak Leaderboard</div>
+                    <div id="habit-streaks-list" class="space-y-2"></div>
+                </div>
+            </div>
+
+            <!-- Replace Bad Habits Tab -->
+            <div id="habits-replace-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-arrows-rotate text-red-500"></i> Bad Habit Replacement Tool</div>
+                    <p class="text-sm text-slate-500 mb-4">You can't eliminate a habit — only replace it. Identify the cue, routine, and reward.</p>
+                    <label class="text-xs font-bold text-slate-600 block mb-1">Bad habit I want to replace:</label>
+                    <input id="bad-habit" class="input-field mb-3" placeholder="e.g., Scrolling social media for 2 hours">
+                    <label class="text-xs font-bold text-slate-600 block mb-1">What triggers this habit? (the cue)</label>
+                    <input id="bad-habit-cue" class="input-field mb-3" placeholder="e.g., Boredom, stress, after lunch">
+                    <label class="text-xs font-bold text-slate-600 block mb-1">What need does it fulfil? (the reward)</label>
+                    <input id="bad-habit-reward" class="input-field mb-3" placeholder="e.g., Relaxation, distraction, connection">
+                    <label class="text-xs font-bold text-slate-600 block mb-1">Replacement habit (same cue, better routine):</label>
+                    <input id="good-habit-replace" class="input-field mb-3" placeholder="e.g., Read for 20 minutes or take a walk">
+                    <button onclick="saveBadHabitReplacement()" class="btn-primary">💪 Create My Replacement Plan</button>
+                </div>
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-list text-slate-500"></i> My Replacement Plans</div>
+                    <div id="replacement-plans-list" class="space-y-3">
+                        <p class="text-sm text-slate-400 text-center py-2">Your replacement plans appear here</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Character Tab -->
+            <div id="habits-character-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-user-graduate text-purple-500"></i> Character Development</div>
+                    <p class="text-sm text-slate-600 mb-4">Build lasting character traits</p>
+                    <div class="mb-4">
+                        <div class="flex gap-2 mb-3">
+                            <button onclick="switchCharacterTab('traits')" id="char-tab-traits" class="flex-1 py-2 px-4 rounded-lg font-bold text-sm bg-slate-900 text-white">My Traits</button>
+                            <button onclick="switchCharacterTab('assessment')" id="char-tab-assessment" class="flex-1 py-2 px-4 rounded-lg font-bold text-sm bg-slate-100 text-slate-700">Assessment</button>
+                        </div>
+                        <div id="character-traits-content">
+                            <div id="character-traits-list" class="space-y-3 mb-4"></div>
+                            <button onclick="showAddCharacterTrait()" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-3 px-4 rounded-xl font-bold text-sm"><i class="fa-solid fa-plus"></i> Add Character Goal</button>
+                        </div>
+                        <div id="character-assessment-content" style="display: none;">
+                            <div class="mb-4">
+                                <h3 class="font-bold text-sm text-slate-800 mb-3">Weekly Self-Assessment</h3>
+                                <div class="space-y-3">
+                                    <div><label class="text-xs font-bold text-slate-600 block mb-1">Growth this week? (1-10)</label><input type="number" id="assess-growth" min="1" max="10" class="input-field" placeholder="1-10"></div>
+                                    <div><label class="text-xs font-bold text-slate-600 block mb-1">Character trait displayed most?</label><input type="text" id="assess-trait" class="input-field" placeholder="e.g., Patience"></div>
+                                    <div><label class="text-xs font-bold text-slate-600 block mb-1">What to improve next week?</label><textarea id="assess-improve" class="textarea-field" style="min-height:60px;" placeholder="Focus area..."></textarea></div>
+                                    <div><label class="text-xs font-bold text-slate-600 block mb-1">Challenges faced & response?</label><textarea id="assess-challenges" class="textarea-field" style="min-height:60px;" placeholder="Challenges..."></textarea></div>
+                                    <div><label class="text-xs font-bold text-slate-600 block mb-1">Most grateful for this week?</label><textarea id="assess-gratitude" class="textarea-field" style="min-height:60px;" placeholder="Gratitude..."></textarea></div>
                                 </div>
-                                <div>
-                                    <label class="text-xs font-bold text-slate-600 block mb-1">Which character trait did you display most?</label>
-                                    <input type="text" id="assess-trait" class="input-field" placeholder="e.g., Patience">
-                                </div>
-                                <div>
-                                    <label class="text-xs font-bold text-slate-600 block mb-1">What area would you like to improve next week?</label>
-                                    <textarea id="assess-improve" class="textarea-field" style="min-height: 60px;" placeholder="Focus area for improvement..."></textarea>
-                                </div>
-                                <div>
-                                    <label class="text-xs font-bold text-slate-600 block mb-1">What challenges did you face and how did you respond?</label>
-                                    <textarea id="assess-challenges" class="textarea-field" style="min-height: 60px;" placeholder="Challenges and responses..."></textarea>
-                                </div>
-                                <div>
-                                    <label class="text-xs font-bold text-slate-600 block mb-1">What are you most grateful for this week?</label>
-                                    <textarea id="assess-gratitude" class="textarea-field" style="min-height: 60px;" placeholder="Gratitude reflection..."></textarea>
-                                </div>
+                                <button onclick="saveWeeklyAssessment()" class="btn-primary mt-4">Save Assessment</button>
                             </div>
-                            <button onclick="saveWeeklyAssessment()" class="btn-primary mt-4">Save Assessment</button>
-                        </div>
-
-                        <div class="p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl mb-4">
-                            <p class="font-bold text-sm text-emerald-900 mb-2">📊 Growth Metrics</p>
-                            <div id="growth-metrics">
-                                <p class="text-xs text-emerald-700">Complete an assessment to see your growth metrics</p>
+                            <div class="p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl mb-4">
+                                <p class="font-bold text-sm text-emerald-900 mb-2">📊 Growth Metrics</p>
+                                <div id="growth-metrics"><p class="text-xs text-emerald-700">Complete an assessment to see your growth metrics</p></div>
                             </div>
-                        </div>
-
-                        <div>
-                            <p class="font-bold text-sm text-slate-800 mb-3">Past Assessments</p>
-                            <div id="past-assessments-list" class="space-y-2">
-                                <!-- Past assessments will be loaded here -->
-                            </div>
+                            <div><p class="font-bold text-sm text-slate-800 mb-3">Past Assessments</p><div id="past-assessments-list" class="space-y-2"></div></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-book-open text-blue-500"></i>
-                    How to Form Habits
-                </div>
-                <div class="space-y-3">
-                    <div class="p-3 bg-blue-50 rounded-lg border-l-4 border-blue-500">
-                        <p class="font-bold text-sm text-blue-900 mb-1">🎯 Start Small</p>
-                        <p class="text-xs text-blue-800">Begin with tiny habits that take less than 2 minutes. Want to read more? Start with just 2 pages daily. Build from there.</p>
-                    </div>
-                    <div class="p-3 bg-green-50 rounded-lg border-l-4 border-green-500">
-                        <p class="font-bold text-sm text-green-900 mb-1">🔗 Stack Habits</p>
-                        <p class="text-xs text-green-800">Link new habits to existing ones. "After I brush my teeth, I will do 10 pushups." Use your current routine as triggers.</p>
-                    </div>
-                    <div class="p-3 bg-purple-50 rounded-lg border-l-4 border-purple-500">
-                        <p class="font-bold text-sm text-purple-900 mb-1">📅 Be Consistent</p>
-                        <p class="text-xs text-purple-800">Same time, same place. Consistency builds neural pathways. Don't aim for perfect - aim for consistent.</p>
-                    </div>
-                    <div class="p-3 bg-amber-50 rounded-lg border-l-4 border-amber-500">
-                        <p class="font-bold text-sm text-amber-900 mb-1">🎉 Celebrate Wins</p>
-                        <p class="text-xs text-amber-800">Acknowledge your progress immediately after completing the habit. Positive reinforcement rewires your brain.</p>
-                    </div>
-                    <div class="p-3 bg-rose-50 rounded-lg border-l-4 border-rose-500">
-                        <p class="font-bold text-sm text-rose-900 mb-1">⏱️ The 66-Day Rule</p>
-                        <p class="text-xs text-rose-800">Research shows it takes an average of 66 days to form a new habit. Be patient with yourself during the formation phase!</p>
+            <!-- Stats Tab -->
+            <div id="habits-stats-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-chart-line text-slate-500"></i> Habit Stats</div>
+                    <div id="habit-stats" class="grid grid-cols-2 gap-3">
+                        <div class="text-center p-3 bg-slate-50 rounded-xl"><p class="text-2xl font-black text-emerald-600" id="total-habits">0</p><p class="text-xs text-slate-500 font-bold">Active Habits</p></div>
+                        <div class="text-center p-3 bg-slate-50 rounded-xl"><p class="text-2xl font-black text-emerald-600" id="completed-today">0</p><p class="text-xs text-slate-500 font-bold">Done Today</p></div>
+                        <div class="text-center p-3 bg-orange-50 rounded-xl"><p class="text-2xl font-black text-orange-600" id="best-streak-display">0</p><p class="text-xs text-slate-500 font-bold">Best Streak 🔥</p></div>
+                        <div class="text-center p-3 bg-blue-50 rounded-xl"><p class="text-2xl font-black text-blue-600" id="total-completions">0</p><p class="text-xs text-slate-500 font-bold">Total Check-ins</p></div>
                     </div>
                 </div>
-            </div>
-
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-chart-line text-slate-500"></i>
-                    Streak Stats
-                </div>
-                <div id="habit-stats" class="grid grid-cols-2 gap-3">
-                    <div class="text-center p-3 bg-slate-50 rounded-xl">
-                        <p class="text-2xl font-black text-emerald-600" id="total-habits">0</p>
-                        <p class="text-xs text-slate-500 font-bold">Active Habits</p>
-                    </div>
-                    <div class="text-center p-3 bg-slate-50 rounded-xl">
-                        <p class="text-2xl font-black text-emerald-600" id="completed-today">0</p>
-                        <p class="text-xs text-slate-500 font-bold">Done Today</p>
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-lightbulb text-yellow-500"></i> Habit Tips</div>
+                    <div class="space-y-2">
+                        <div class="tip-card"><p class="font-bold text-amber-800 mb-1">Start Small</p><p class="text-xs text-amber-900">Make it so easy you can't say no. Build from there.</p></div>
+                        <div class="tip-card"><p class="font-bold text-amber-800 mb-1">Stack Habits</p><p class="text-xs text-amber-900">After [existing habit], I will [new habit].</p></div>
+                        <div class="tip-card"><p class="font-bold text-amber-800 mb-1">The 66-Day Rule</p><p class="text-xs text-amber-900">It takes 66 days on average to form a lasting habit.</p></div>
                     </div>
                 </div>
             </div>
@@ -2722,49 +2759,102 @@
             </div>
         </header>
 
-        <main class="p-5 -mt-6">
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-star text-amber-500"></i>
-                    SMART Goal Framework
-                </div>
-                <div class="space-y-2 text-xs text-slate-600">
-                    <p><strong>S</strong>pecific: Clearly defined and focused</p>
-                    <p><strong>M</strong>easurable: Track progress with numbers</p>
-                    <p><strong>A</strong>chievable: Realistic but challenging</p>
-                    <p><strong>R</strong>elevant: Aligned with your values</p>
-                    <p><strong>T</strong>ime-bound: Has a deadline</p>
-                </div>
+        <div class="sticky top-0 z-10 bg-white px-5 pt-4 pb-2 -mt-6">
+            <div class="flex gap-2 overflow-x-auto pb-2" style="scrollbar-width: none;">
+                <button class="gym-tab active" onclick="switchGoalsTab('create')" id="goals-tab-create"><i class="fa-solid fa-plus"></i> Create</button>
+                <button class="gym-tab" onclick="switchGoalsTab('active')" id="goals-tab-active"><i class="fa-solid fa-list-check"></i> Active</button>
+                <button class="gym-tab" onclick="switchGoalsTab('milestones')" id="goals-tab-milestones"><i class="fa-solid fa-flag"></i> Milestones</button>
+                <button class="gym-tab" onclick="switchGoalsTab('checkin')" id="goals-tab-checkin"><i class="fa-solid fa-calendar-check"></i> Check-In</button>
             </div>
+        </div>
 
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-plus text-red-600"></i>
-                    Create New Goal
-                </div>
-                <input id="goal-title" class="input-field mb-3" placeholder="Goal title (e.g., Run 5K in under 30 minutes)">
-                <input id="goal-deadline" class="input-field mb-3" type="date">
-                <textarea id="goal-action-steps" class="textarea-field" placeholder="Action steps to achieve this goal..."></textarea>
-                <div class="mb-3">
-                    <label class="text-xs font-bold text-slate-600 block mb-2">Category</label>
-                    <select id="goal-category" class="input-field">
-                        <option value="fitness">Fitness</option>
-                        <option value="career">Career</option>
-                        <option value="spiritual">Spiritual</option>
-                        <option value="financial">Financial</option>
-                        <option value="personal">Personal Growth</option>
-                        <option value="relationships">Relationships</option>
+        <main class="p-5">
+            <!-- Create Tab — SMART Builder -->
+            <div id="goals-create-content" class="gym-tab-content">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-star text-amber-500"></i> SMART Goal Builder</div>
+                    <p class="text-xs text-slate-500 mb-4">Build a goal that's Specific, Measurable, Achievable, Relevant & Time-bound</p>
+                    <label class="text-xs font-bold text-slate-600 block mb-1">🎯 Specific — What exactly do I want?</label>
+                    <input id="goal-title" class="input-field mb-3" placeholder="e.g., Run 5K in under 30 minutes">
+                    <label class="text-xs font-bold text-slate-600 block mb-1">📏 Measurable — How will I know I succeeded?</label>
+                    <input id="goal-measure" class="input-field mb-3" placeholder="e.g., Track run time weekly on Strava">
+                    <label class="text-xs font-bold text-slate-600 block mb-1">🏷️ Category</label>
+                    <select id="goal-category" class="input-field mb-3">
+                        <option value="fitness">💪 Fitness</option>
+                        <option value="career">💼 Career</option>
+                        <option value="spiritual">🙏 Spiritual</option>
+                        <option value="financial">💰 Financial</option>
+                        <option value="personal">🌱 Personal Growth</option>
+                        <option value="relationships">❤️ Relationships</option>
+                        <option value="health">🏥 Health</option>
                     </select>
+                    <label class="text-xs font-bold text-slate-600 block mb-1">📅 Deadline</label>
+                    <input id="goal-deadline" class="input-field mb-3" type="date">
+                    <label class="text-xs font-bold text-slate-600 block mb-1">📋 Why this goal matters (Relevant)</label>
+                    <textarea id="goal-why" class="textarea-field mb-3" placeholder="Why is this goal important to me?" style="min-height:70px;"></textarea>
+                    <label class="text-xs font-bold text-slate-600 block mb-1">🪜 First 3 action steps</label>
+                    <input id="goal-step1" class="input-field mb-2" placeholder="Step 1">
+                    <input id="goal-step2" class="input-field mb-2" placeholder="Step 2">
+                    <input id="goal-step3" class="input-field mb-3" placeholder="Step 3">
+                    <button onclick="saveGoal()" class="btn-primary">🚀 Create Goal</button>
                 </div>
-                <button onclick="saveGoal()" class="btn-primary mt-4">Create Goal</button>
             </div>
 
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-list-check text-slate-500"></i>
-                    Active Goals
+            <!-- Active Goals Tab -->
+            <div id="goals-active-content" class="gym-tab-content" style="display:none;">
+                <div id="goals-list" class="space-y-4"></div>
+                <div class="content-card mt-2">
+                    <div class="section-title"><i class="fa-solid fa-check-circle text-green-500"></i> Completed Goals</div>
+                    <div id="completed-goals-list" class="space-y-2">
+                        <p class="text-sm text-slate-400 text-center py-2">Completed goals appear here 🎉</p>
+                    </div>
                 </div>
-                <div id="goals-list"></div>
+            </div>
+
+            <!-- Milestones Tab -->
+            <div id="goals-milestones-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-flag text-blue-500"></i> Add Milestone</div>
+                    <p class="text-xs text-slate-500 mb-3">Break your goals into smaller steps. Each milestone is a win.</p>
+                    <select id="milestone-goal-select" class="input-field mb-3">
+                        <option value="">Select a goal...</option>
+                    </select>
+                    <input id="milestone-title" class="input-field mb-3" placeholder="Milestone (e.g., Complete first 5K run)">
+                    <input id="milestone-date" class="input-field mb-3" type="date" placeholder="Target date">
+                    <button onclick="saveMilestone()" class="btn-primary">Add Milestone</button>
+                </div>
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-list text-slate-500"></i> All Milestones</div>
+                    <div id="milestones-list" class="space-y-3">
+                        <p class="text-sm text-slate-400 text-center py-2">Add milestones to track sub-goals</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weekly Check-In Tab -->
+            <div id="goals-checkin-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-calendar-check text-green-500"></i> Weekly Goal Check-In</div>
+                    <p class="text-xs text-slate-500 mb-3">Review your progress every week to stay on track.</p>
+                    <select id="checkin-goal-select" class="input-field mb-3">
+                        <option value="">Select a goal...</option>
+                    </select>
+                    <label class="text-xs font-bold text-slate-600 block mb-1">Progress this week? (0-100%)</label>
+                    <input id="checkin-progress" type="number" min="0" max="100" class="input-field mb-3" placeholder="e.g., 40">
+                    <label class="text-xs font-bold text-slate-600 block mb-1">What did I accomplish?</label>
+                    <textarea id="checkin-wins" class="textarea-field mb-3" placeholder="What went well this week?" style="min-height:70px;"></textarea>
+                    <label class="text-xs font-bold text-slate-600 block mb-1">What's blocking me?</label>
+                    <textarea id="checkin-obstacles" class="textarea-field mb-3" placeholder="Any blockers or challenges?" style="min-height:70px;"></textarea>
+                    <label class="text-xs font-bold text-slate-600 block mb-1">Next week's focus:</label>
+                    <textarea id="checkin-next" class="textarea-field mb-3" placeholder="What's my priority next week?" style="min-height:70px;"></textarea>
+                    <button onclick="saveGoalCheckIn()" class="btn-primary">✅ Save Check-In</button>
+                </div>
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-history text-slate-500"></i> Check-In History</div>
+                    <div id="checkin-history" class="space-y-3">
+                        <p class="text-sm text-slate-400 text-center py-2">Your check-ins appear here</p>
+                    </div>
+                </div>
             </div>
         </main>
         
@@ -2792,73 +2882,190 @@
             </div>
         </header>
 
-        <main class="p-5 -mt-6">
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-bed text-indigo-500"></i>
-                    Sleep Tracker
-                </div>
-                <div class="grid grid-cols-2 gap-3 mb-3">
-                    <input id="sleep-hours" class="input-field" type="number" placeholder="Hours slept" step="0.5">
-                    <select id="sleep-quality" class="input-field">
-                        <option value="">Quality</option>
-                        <option value="excellent">Excellent</option>
-                        <option value="good">Good</option>
-                        <option value="fair">Fair</option>
-                        <option value="poor">Poor</option>
-                    </select>
-                </div>
-                <button onclick="logSleep()" class="btn-primary">Log Sleep</button>
+        <div class="sticky top-0 z-10 bg-white px-5 pt-4 pb-2 -mt-6">
+            <div class="flex gap-2 overflow-x-auto pb-2" style="scrollbar-width: none;">
+                <button class="gym-tab active" onclick="switchWellnessTab('sleep')" id="wellness-tab-sleep"><i class="fa-solid fa-bed"></i> Sleep</button>
+                <button class="gym-tab" onclick="switchWellnessTab('breathe')" id="wellness-tab-breathe"><i class="fa-solid fa-wind"></i> Breathe</button>
+                <button class="gym-tab" onclick="switchWellnessTab('score')" id="wellness-tab-score"><i class="fa-solid fa-heart-pulse"></i> Score</button>
+                <button class="gym-tab" onclick="switchWellnessTab('water')" id="wellness-tab-water"><i class="fa-solid fa-droplet"></i> Water</button>
+                <button class="gym-tab" onclick="switchWellnessTab('log')" id="wellness-tab-log"><i class="fa-solid fa-clock-rotate-left"></i> Log</button>
             </div>
+        </div>
 
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-droplet text-blue-500"></i>
-                    Water Intake
-                </div>
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="flex-1">
-                        <div class="text-center p-4 bg-slate-50 rounded-xl">
-                            <p class="text-3xl font-black text-cyan-600" id="water-count">0</p>
-                            <p class="text-xs text-slate-500 font-bold">Glasses Today</p>
+        <main class="p-5">
+            <!-- Sleep Tracker Tab -->
+            <div id="wellness-sleep-content" class="gym-tab-content">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-bed text-indigo-500"></i> Sleep Tracker</div>
+                    <div class="grid grid-cols-2 gap-3 mb-3">
+                        <div>
+                            <label class="text-xs font-bold text-slate-500 block mb-1">Bedtime</label>
+                            <input id="sleep-bedtime" class="input-field" type="time">
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-slate-500 block mb-1">Wake Time</label>
+                            <input id="sleep-waketime" class="input-field" type="time">
                         </div>
                     </div>
-                    <div class="flex flex-col gap-2">
-                        <button onclick="addWater()" class="w-12 h-12 bg-cyan-500 text-white rounded-xl font-black text-xl">+</button>
-                        <button onclick="removeWater()" class="w-12 h-12 bg-slate-200 text-slate-600 rounded-xl font-black text-xl">-</button>
+                    <label class="text-xs font-bold text-slate-500 block mb-2">Sleep Quality</label>
+                    <div class="flex gap-2 mb-3">
+                        <button onclick="selectSleepQuality('poor','😴')" class="flex-1 py-2 rounded-xl border-2 border-slate-200 text-sm font-bold sleep-quality-btn" data-q="poor">😴 Poor</button>
+                        <button onclick="selectSleepQuality('fair','😐')" class="flex-1 py-2 rounded-xl border-2 border-slate-200 text-sm font-bold sleep-quality-btn" data-q="fair">😐 Fair</button>
+                        <button onclick="selectSleepQuality('good','😊')" class="flex-1 py-2 rounded-xl border-2 border-slate-200 text-sm font-bold sleep-quality-btn" data-q="good">😊 Good</button>
+                        <button onclick="selectSleepQuality('great','🌟')" class="flex-1 py-2 rounded-xl border-2 border-slate-200 text-sm font-bold sleep-quality-btn" data-q="great">🌟 Great</button>
+                    </div>
+                    <input type="hidden" id="sleep-quality-val" value="">
+                    <textarea id="sleep-notes" class="textarea-field mb-3" placeholder="Dream notes, anything unusual? (optional)" style="min-height:60px;"></textarea>
+                    <button onclick="logSleep()" class="btn-primary">Log Sleep</button>
+                </div>
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-chart-line text-indigo-400"></i> Sleep Stats</div>
+                    <div class="grid grid-cols-3 gap-3 mb-4">
+                        <div class="text-center p-3 bg-indigo-50 rounded-xl">
+                            <p class="text-xl font-black text-indigo-700" id="avg-sleep-hours">—</p>
+                            <p class="text-xs text-slate-500 font-bold">Avg Hours</p>
+                        </div>
+                        <div class="text-center p-3 bg-purple-50 rounded-xl">
+                            <p class="text-xl font-black text-purple-700" id="sleep-streak-days">0</p>
+                            <p class="text-xs text-slate-500 font-bold">Day Streak</p>
+                        </div>
+                        <div class="text-center p-3 bg-blue-50 rounded-xl">
+                            <p class="text-xl font-black text-blue-700" id="best-sleep-quality">—</p>
+                            <p class="text-xs text-slate-500 font-bold">Best Quality</p>
+                        </div>
+                    </div>
+                    <div id="sleep-log-history" class="space-y-2"></div>
+                </div>
+            </div>
+
+            <!-- Breathing Exercise Tab -->
+            <div id="wellness-breathe-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card text-center">
+                    <div class="section-title justify-center"><i class="fa-solid fa-wind text-cyan-500"></i> Breathing Exercises</div>
+                    <div class="flex gap-2 mb-4">
+                        <button onclick="startBreathing('box')" class="flex-1 py-2 px-3 rounded-xl border-2 font-bold text-sm border-cyan-300 text-cyan-700 bg-cyan-50 breathe-type-btn" data-type="box">📦 Box</button>
+                        <button onclick="startBreathing('478')" class="flex-1 py-2 px-3 rounded-xl border-2 font-bold text-sm border-indigo-300 text-indigo-700 bg-indigo-50 breathe-type-btn" data-type="478">🌙 4-7-8</button>
+                        <button onclick="startBreathing('calm')" class="flex-1 py-2 px-3 rounded-xl border-2 font-bold text-sm border-green-300 text-green-700 bg-green-50 breathe-type-btn" data-type="calm">🌿 Calm</button>
+                    </div>
+                    <!-- Breathing Circle -->
+                    <div style="position:relative;width:200px;height:200px;margin:0 auto 1.5rem;" id="breathing-container">
+                        <div id="breathing-circle" style="width:120px;height:120px;background:linear-gradient(135deg,#06b6d4,#0891b2);border-radius:50%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);transition:all 4s ease-in-out;display:flex;align-items:center;justify-content:center;">
+                            <span id="breathing-emoji" style="font-size:2.5rem;">💨</span>
+                        </div>
+                    </div>
+                    <p id="breathing-instruction" class="text-2xl font-black text-slate-700 mb-2">Ready</p>
+                    <p id="breathing-phase" class="text-sm text-slate-500 mb-4">Choose a technique above and press Start</p>
+                    <p id="breathing-timer" class="text-4xl font-black text-cyan-600 mb-4">—</p>
+                    <div class="flex gap-3 justify-center">
+                        <button onclick="startBreathingSession()" id="breathe-start-btn" class="btn-primary" style="width:auto;padding:1rem 2rem;">▶ Start</button>
+                        <button onclick="stopBreathingSession()" id="breathe-stop-btn" class="btn-primary" style="width:auto;padding:1rem 2rem;background:#e2e8f0;color:#64748b;display:none;">⏹ Stop</button>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-info-circle text-cyan-500"></i> Technique Guide</div>
+                    <div class="space-y-3">
+                        <div class="p-3 bg-cyan-50 rounded-xl border border-cyan-200">
+                            <p class="font-bold text-cyan-800 text-sm mb-1">📦 Box Breathing</p>
+                            <p class="text-xs text-cyan-700">Inhale 4s → Hold 4s → Exhale 4s → Hold 4s. Used by Navy SEALs to reduce stress.</p>
+                        </div>
+                        <div class="p-3 bg-indigo-50 rounded-xl border border-indigo-200">
+                            <p class="font-bold text-indigo-800 text-sm mb-1">🌙 4-7-8 Method</p>
+                            <p class="text-xs text-indigo-700">Inhale 4s → Hold 7s → Exhale 8s. Dr. Weil's technique for instant calm.</p>
+                        </div>
+                        <div class="p-3 bg-green-50 rounded-xl border border-green-200">
+                            <p class="font-bold text-green-800 text-sm mb-1">🌿 Calm Breathing</p>
+                            <p class="text-xs text-green-700">Inhale 5s → Exhale 5s. Simple rhythmic breathing to reduce anxiety.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-brain text-purple-500"></i>
-                    Mindfulness & Meditation
+            <!-- Weekly Score Tab -->
+            <div id="wellness-score-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-heart-pulse text-rose-500"></i> Weekly Wellness Score</div>
+                    <div style="text-align:center;padding:1.5rem 0;">
+                        <div style="width:140px;height:140px;border-radius:50%;background:conic-gradient(#10b981 0% 0%,#e2e8f0 0%);margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;position:relative;" id="wellness-score-ring">
+                            <div style="width:100px;height:100px;background:white;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                                <p id="wellness-score-value" class="text-3xl font-black text-emerald-600">—</p>
+                                <p class="text-xs text-slate-400 font-bold">/100</p>
+                            </div>
+                        </div>
+                        <p id="wellness-score-label" class="font-bold text-slate-600">Log data to calculate your score</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="p-3 bg-indigo-50 rounded-xl">
+                            <p class="text-xs font-bold text-indigo-600">😴 SLEEP</p>
+                            <p class="font-black text-indigo-900" id="score-sleep-val">No data</p>
+                        </div>
+                        <div class="p-3 bg-cyan-50 rounded-xl">
+                            <p class="text-xs font-bold text-cyan-600">💧 WATER</p>
+                            <p class="font-black text-cyan-900" id="score-water-val">No data</p>
+                        </div>
+                        <div class="p-3 bg-rose-50 rounded-xl">
+                            <p class="text-xs font-bold text-rose-600">😊 MOOD</p>
+                            <p class="font-black text-rose-900" id="score-mood-val">No data</p>
+                        </div>
+                        <div class="p-3 bg-orange-50 rounded-xl">
+                            <p class="text-xs font-bold text-orange-600">🏃 MOVEMENT</p>
+                            <p class="font-black text-orange-900" id="score-movement-val">No data</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="space-y-2 text-sm">
-                    <div class="tip-card">
-                        <p class="font-bold text-amber-800 mb-1">Box Breathing</p>
-                        <p class="text-xs text-amber-900">Breathe in (4s) → Hold (4s) → Out (4s) → Hold (4s)</p>
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-person text-teal-500"></i> Quick Body Scan</div>
+                    <p class="text-xs text-slate-500 mb-3">How is each area of your body feeling right now?</p>
+                    <div class="space-y-2" id="body-scan-form">
+                        <div class="flex items-center justify-between p-2 bg-slate-50 rounded-lg">
+                            <span class="text-sm font-bold text-slate-700">🧠 Head / Mind</span>
+                            <select class="body-scan-select input-field" style="width:auto;" data-area="head"><option value="">—</option><option value="great">Great</option><option value="ok">OK</option><option value="tense">Tense</option><option value="painful">Painful</option></select>
+                        </div>
+                        <div class="flex items-center justify-between p-2 bg-slate-50 rounded-lg">
+                            <span class="text-sm font-bold text-slate-700">💪 Shoulders/Neck</span>
+                            <select class="body-scan-select input-field" style="width:auto;" data-area="shoulders"><option value="">—</option><option value="great">Great</option><option value="ok">OK</option><option value="tense">Tense</option><option value="painful">Painful</option></select>
+                        </div>
+                        <div class="flex items-center justify-between p-2 bg-slate-50 rounded-lg">
+                            <span class="text-sm font-bold text-slate-700">❤️ Chest / Heart</span>
+                            <select class="body-scan-select input-field" style="width:auto;" data-area="chest"><option value="">—</option><option value="great">Great</option><option value="ok">OK</option><option value="tense">Tense</option><option value="painful">Painful</option></select>
+                        </div>
+                        <div class="flex items-center justify-between p-2 bg-slate-50 rounded-lg">
+                            <span class="text-sm font-bold text-slate-700">🦵 Legs / Lower Back</span>
+                            <select class="body-scan-select input-field" style="width:auto;" data-area="legs"><option value="">—</option><option value="great">Great</option><option value="ok">OK</option><option value="tense">Tense</option><option value="painful">Painful</option></select>
+                        </div>
+                        <div class="flex items-center justify-between p-2 bg-slate-50 rounded-lg">
+                            <span class="text-sm font-bold text-slate-700">⚡ Energy Level</span>
+                            <select class="body-scan-select input-field" style="width:auto;" data-area="energy"><option value="">—</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option><option value="exhausted">Exhausted</option></select>
+                        </div>
                     </div>
-                    <div class="tip-card">
-                        <p class="font-bold text-amber-800 mb-1">5-Minute Meditation</p>
-                        <p class="text-xs text-amber-900">Sit quietly, focus on breath, notice thoughts without judgment.</p>
-                    </div>
-                    <div class="tip-card">
-                        <p class="font-bold text-amber-800 mb-1">Body Scan</p>
-                        <p class="text-xs text-amber-900">Notice tension from head to toe, consciously relax each part.</p>
-                    </div>
+                    <button onclick="saveBodyScan()" class="btn-primary mt-4">Save Body Scan</button>
                 </div>
-                <input id="meditation-minutes" class="input-field mt-3" type="number" placeholder="Minutes meditated">
-                <button onclick="logMeditation()" class="btn-primary mt-3">Log Session</button>
             </div>
 
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-clock-rotate-left text-slate-500"></i>
-                    Wellness Log
+            <!-- Water Tab -->
+            <div id="wellness-water-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-droplet text-blue-500"></i> Water Intake</div>
+                    <div class="text-center p-4 bg-blue-50 rounded-xl mb-4">
+                        <p class="text-5xl font-black text-cyan-600" id="water-count">0</p>
+                        <p class="text-sm text-slate-500 font-bold">/ 8 glasses today</p>
+                        <div class="goal-progress-bar mt-3">
+                            <div id="water-progress" class="goal-progress-fill" style="width:0%;background:linear-gradient(90deg,#06b6d4,#0891b2);"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 justify-center mb-4" id="water-glasses-display"></div>
+                    <div class="flex gap-3">
+                        <button onclick="addWater()" class="flex-1 btn-primary" style="background:linear-gradient(135deg,#06b6d4,#0891b2);">+ Add Glass</button>
+                        <button onclick="removeWater()" class="flex-1 btn-primary" style="background:#e2e8f0;color:#64748b;">- Remove</button>
+                    </div>
                 </div>
-                <div id="wellness-entries"></div>
+            </div>
+
+            <!-- Log Tab -->
+            <div id="wellness-log-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-clock-rotate-left text-slate-500"></i> Wellness Log</div>
+                    <div id="wellness-entries"></div>
+                </div>
             </div>
         </main>
         
@@ -2900,6 +3107,18 @@
                 </button>
                 <button class="learning-tab" onclick="switchLearningTab('skills')" id="learning-tab-skills">
                     <i class="fa-solid fa-tools"></i> Skills
+                </button>
+                <button class="learning-tab" onclick="switchLearningTab('microlessons')" id="learning-tab-microlessons">
+                    <i class="fa-solid fa-bolt"></i> Micro
+                </button>
+                <button class="learning-tab" onclick="switchLearningTab('booknotes')" id="learning-tab-booknotes">
+                    <i class="fa-solid fa-sticky-note"></i> Notes
+                </button>
+                <button class="learning-tab" onclick="switchLearningTab('learninggoals')" id="learning-tab-learninggoals">
+                    <i class="fa-solid fa-bullseye"></i> L.Goals
+                </button>
+                <button class="learning-tab" onclick="switchLearningTab('flashcards')" id="learning-tab-flashcards">
+                    <i class="fa-solid fa-clone"></i> Cards
                 </button>
             </div>
 
@@ -3605,6 +3824,302 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Micro-Lessons Tab Content -->
+            <div id="learning-microlessons-content" class="learning-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-bolt text-yellow-500"></i> Daily Micro-Lesson</div>
+                    <p class="text-sm text-slate-600 mb-4">5-minute lessons to keep your mind sharp every day</p>
+                    <div id="micro-lesson-card" class="p-4 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl border-2 border-indigo-200 mb-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold text-indigo-600 bg-indigo-100 px-3 py-1 rounded-full" id="micro-lesson-category">Loading...</span>
+                            <span class="text-xs text-slate-500" id="micro-lesson-duration">⏱ 5 min</span>
+                        </div>
+                        <h3 class="font-black text-lg text-slate-900 mb-2" id="micro-lesson-title">Loading today's lesson...</h3>
+                        <p class="text-sm text-slate-700 leading-relaxed" id="micro-lesson-content">Tap refresh to load your daily micro-lesson.</p>
+                        <div class="mt-4 p-3 bg-white rounded-xl border border-indigo-100">
+                            <p class="text-xs font-bold text-indigo-700 mb-1">💡 Key Takeaway</p>
+                            <p class="text-xs text-slate-600" id="micro-lesson-takeaway">—</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="loadMicroLesson()" class="btn-primary text-sm">
+                            <i class="fa-solid fa-refresh mr-1"></i> New Lesson
+                        </button>
+                        <button onclick="markMicroLessonDone()" class="btn-primary text-sm" style="background: #10b981;">
+                            <i class="fa-solid fa-check mr-1"></i> Mark Done
+                        </button>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-fire text-orange-500"></i> Lesson Streak</div>
+                    <div class="grid grid-cols-3 gap-3 mb-3">
+                        <div class="text-center p-3 bg-orange-50 rounded-xl">
+                            <p class="text-2xl font-black text-orange-600" id="micro-streak">0</p>
+                            <p class="text-xs font-bold text-orange-800">Day Streak</p>
+                        </div>
+                        <div class="text-center p-3 bg-purple-50 rounded-xl">
+                            <p class="text-2xl font-black text-purple-600" id="micro-total">0</p>
+                            <p class="text-xs font-bold text-purple-800">Total Done</p>
+                        </div>
+                        <div class="text-center p-3 bg-blue-50 rounded-xl">
+                            <p class="text-2xl font-black text-blue-600" id="micro-this-week">0</p>
+                            <p class="text-xs font-bold text-blue-800">This Week</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-list text-slate-500"></i> Lesson Categories</div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="loadMicroLesson('finance')" class="p-3 bg-green-50 border border-green-200 rounded-xl text-left">
+                            <p class="text-lg mb-1">💰</p>
+                            <p class="font-bold text-sm text-slate-800">Finance</p>
+                            <p class="text-xs text-slate-500">Money & investing</p>
+                        </button>
+                        <button onclick="loadMicroLesson('mindset')" class="p-3 bg-purple-50 border border-purple-200 rounded-xl text-left">
+                            <p class="text-lg mb-1">🧠</p>
+                            <p class="font-bold text-sm text-slate-800">Mindset</p>
+                            <p class="text-xs text-slate-500">Mental strength</p>
+                        </button>
+                        <button onclick="loadMicroLesson('productivity')" class="p-3 bg-blue-50 border border-blue-200 rounded-xl text-left">
+                            <p class="text-lg mb-1">⚡</p>
+                            <p class="font-bold text-sm text-slate-800">Productivity</p>
+                            <p class="text-xs text-slate-500">Do more, stress less</p>
+                        </button>
+                        <button onclick="loadMicroLesson('leadership')" class="p-3 bg-amber-50 border border-amber-200 rounded-xl text-left">
+                            <p class="text-lg mb-1">👑</p>
+                            <p class="font-bold text-sm text-slate-800">Leadership</p>
+                            <p class="text-xs text-slate-500">Influence & impact</p>
+                        </button>
+                        <button onclick="loadMicroLesson('health')" class="p-3 bg-red-50 border border-red-200 rounded-xl text-left">
+                            <p class="text-lg mb-1">❤️</p>
+                            <p class="font-bold text-sm text-slate-800">Health</p>
+                            <p class="text-xs text-slate-500">Body & longevity</p>
+                        </button>
+                        <button onclick="loadMicroLesson('tech')" class="p-3 bg-slate-50 border border-slate-200 rounded-xl text-left">
+                            <p class="text-lg mb-1">💻</p>
+                            <p class="font-bold text-sm text-slate-800">Tech</p>
+                            <p class="text-xs text-slate-500">Digital skills</p>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-history text-slate-500"></i> Completed Lessons</div>
+                    <div id="micro-lessons-history" class="space-y-2">
+                        <p class="text-sm text-slate-400 text-center py-4">Complete your first lesson to see history</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book Notes Tab Content -->
+            <div id="learning-booknotes-content" class="learning-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-sticky-note text-yellow-500"></i> Add Book Note</div>
+                    <p class="text-sm text-slate-600 mb-3">Capture key insights from books you're reading</p>
+                    <input id="note-book-title" class="input-field mb-3" placeholder="Book title">
+                    <input id="note-author" class="input-field mb-3" placeholder="Author name">
+                    <input id="note-page" class="input-field mb-3" type="number" placeholder="Page number (optional)">
+                    <select id="note-type" class="input-field mb-3">
+                        <option value="insight">💡 Key Insight</option>
+                        <option value="quote">💬 Memorable Quote</option>
+                        <option value="action">✅ Action Item</option>
+                        <option value="question">❓ Question Raised</option>
+                        <option value="summary">📝 Chapter Summary</option>
+                    </select>
+                    <textarea id="note-content" class="textarea-field mb-3" placeholder="Write your note, insight, or quote here..." style="min-height:120px;"></textarea>
+                    <div class="flex gap-2 mb-3">
+                        <input id="note-tag" class="input-field flex-1" placeholder="Add tag (e.g. mindset, money)">
+                        <button onclick="addNoteTag()" class="bg-slate-200 text-slate-700 px-4 rounded-xl font-bold text-sm">Add</button>
+                    </div>
+                    <div id="note-tags-display" class="flex flex-wrap gap-2 mb-3"></div>
+                    <button onclick="saveBookNote()" class="btn-primary"><i class="fa-solid fa-save mr-2"></i>Save Note</button>
+                </div>
+
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-search text-blue-500"></i> Search Notes</div>
+                    <div class="flex gap-2">
+                        <input id="notes-search-input" class="input-field flex-1" placeholder="Search notes by book or keyword..." oninput="searchBookNotes()">
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-book text-purple-500"></i> My Notes</div>
+                    <div class="flex gap-2 mb-3 overflow-x-auto">
+                        <button onclick="filterNotes('all')" id="notes-filter-all" class="px-3 py-1 rounded-lg text-xs font-bold bg-slate-900 text-white whitespace-nowrap">All</button>
+                        <button onclick="filterNotes('insight')" id="notes-filter-insight" class="px-3 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 whitespace-nowrap">💡 Insights</button>
+                        <button onclick="filterNotes('quote')" id="notes-filter-quote" class="px-3 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 whitespace-nowrap">💬 Quotes</button>
+                        <button onclick="filterNotes('action')" id="notes-filter-action" class="px-3 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 whitespace-nowrap">✅ Actions</button>
+                    </div>
+                    <div id="book-notes-list" class="space-y-3">
+                        <p class="text-sm text-slate-400 text-center py-4">No notes yet. Start capturing insights!</p>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-chart-bar text-indigo-500"></i> Notes Stats</div>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="text-center p-3 bg-yellow-50 rounded-xl">
+                            <p class="text-2xl font-black text-yellow-600" id="notes-total-count">0</p>
+                            <p class="text-xs font-bold text-yellow-800">Total Notes</p>
+                        </div>
+                        <div class="text-center p-3 bg-purple-50 rounded-xl">
+                            <p class="text-2xl font-black text-purple-600" id="notes-books-count">0</p>
+                            <p class="text-xs font-bold text-purple-800">Books Noted</p>
+                        </div>
+                        <div class="text-center p-3 bg-blue-50 rounded-xl">
+                            <p class="text-2xl font-black text-blue-600" id="notes-this-week">0</p>
+                            <p class="text-xs font-bold text-blue-800">This Week</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Goals Tab Content -->
+            <div id="learning-learninggoals-content" class="learning-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-bullseye text-red-500"></i> New Learning Goal</div>
+                    <p class="text-sm text-slate-600 mb-3">Set specific goals for what you want to learn</p>
+                    <input id="lg-title" class="input-field mb-3" placeholder="What do you want to learn? (e.g. Spanish B1 level)">
+                    <select id="lg-category" class="input-field mb-3">
+                        <option value="language">🌍 Language</option>
+                        <option value="tech">💻 Tech/Coding</option>
+                        <option value="finance">💰 Finance</option>
+                        <option value="creative">🎨 Creative Arts</option>
+                        <option value="health">❤️ Health/Fitness</option>
+                        <option value="business">🚀 Business</option>
+                        <option value="spiritual">✝️ Spiritual</option>
+                        <option value="other">📚 Other</option>
+                    </select>
+                    <select id="lg-timeframe" class="input-field mb-3">
+                        <option value="30">30-day goal</option>
+                        <option value="60">60-day goal</option>
+                        <option value="90">90-day goal</option>
+                        <option value="180">6-month goal</option>
+                        <option value="365">1-year goal</option>
+                    </select>
+                    <input id="lg-daily-target" class="input-field mb-3" type="number" placeholder="Daily practice target (minutes)">
+                    <textarea id="lg-why" class="textarea-field mb-3" placeholder="Why do you want to learn this?" style="min-height:80px;"></textarea>
+                    <button onclick="saveLearningGoal()" class="btn-primary"><i class="fa-solid fa-plus mr-2"></i>Create Learning Goal</button>
+                </div>
+
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-list-check text-green-500"></i> Active Learning Goals</div>
+                    <div id="learning-goals-list" class="space-y-4">
+                        <p class="text-sm text-slate-400 text-center py-4">No learning goals yet. Create your first one!</p>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-clock text-blue-500"></i> Log Today's Practice</div>
+                    <select id="lg-log-goal" class="input-field mb-3">
+                        <option value="">Select learning goal...</option>
+                    </select>
+                    <input id="lg-log-minutes" class="input-field mb-3" type="number" placeholder="Minutes practiced">
+                    <textarea id="lg-log-notes" class="textarea-field mb-3" placeholder="What did you practice?" style="min-height:80px;"></textarea>
+                    <button onclick="logLearningGoalSession()" class="btn-primary"><i class="fa-solid fa-play mr-2"></i>Log Session</button>
+                </div>
+            </div>
+
+            <!-- Flashcards Tab Content -->
+            <div id="learning-flashcards-content" class="learning-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-clone text-indigo-500"></i> Flashcard Decks</div>
+                    <div class="flex gap-3 mb-4 overflow-x-auto pb-2">
+                        <button onclick="loadFlashcardDeck('all')" id="deck-btn-all" class="px-4 py-2 rounded-lg text-sm font-bold bg-slate-900 text-white whitespace-nowrap">All Decks</button>
+                        <button onclick="openCreateDeckModal()" class="px-4 py-2 rounded-lg text-sm font-bold bg-indigo-600 text-white whitespace-nowrap"><i class="fa-solid fa-plus mr-1"></i>New Deck</button>
+                    </div>
+                    <div id="flashcard-decks-list" class="space-y-3">
+                        <!-- Default decks -->
+                        <div class="p-4 bg-gradient-to-r from-indigo-50 to-purple-50 border-2 border-indigo-200 rounded-xl flex items-center justify-between cursor-pointer" onclick="startStudySession('finance-basics')">
+                            <div>
+                                <p class="font-bold text-slate-800">💰 Finance Basics</p>
+                                <p class="text-xs text-slate-500">10 cards • Last studied 2 days ago</p>
+                            </div>
+                            <button class="bg-indigo-600 text-white px-3 py-1 rounded-lg text-xs font-bold">Study</button>
+                        </div>
+                        <div class="p-4 bg-gradient-to-r from-green-50 to-teal-50 border-2 border-green-200 rounded-xl flex items-center justify-between cursor-pointer" onclick="startStudySession('productivity-hacks')">
+                            <div>
+                                <p class="font-bold text-slate-800">⚡ Productivity Hacks</p>
+                                <p class="text-xs text-slate-500">8 cards • Not studied yet</p>
+                            </div>
+                            <button class="bg-green-600 text-white px-3 py-1 rounded-lg text-xs font-bold">Study</button>
+                        </div>
+                        <div id="custom-decks-container"></div>
+                    </div>
+                </div>
+
+                <!-- Flashcard Study Area -->
+                <div id="flashcard-study-area" class="content-card" style="display:none;">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="section-title mb-0"><i class="fa-solid fa-brain text-indigo-500"></i> Study Session</div>
+                        <button onclick="closeStudySession()" class="text-xs text-red-500 font-bold">✕ End</button>
+                    </div>
+                    <div class="text-center mb-3">
+                        <p class="text-xs text-slate-500" id="card-progress-text">Card 1 of 10</p>
+                        <div class="h-2 bg-slate-200 rounded-full mt-1 overflow-hidden">
+                            <div id="card-progress-bar" class="h-full bg-indigo-500 transition-all duration-300" style="width:10%"></div>
+                        </div>
+                    </div>
+                    <!-- The card -->
+                    <div id="flashcard-display" class="relative" style="perspective:1000px; min-height:200px; cursor:pointer;" onclick="flipCard()">
+                        <div id="flashcard-inner" style="transition: transform 0.6s; transform-style: preserve-3d; position:relative; min-height:200px;">
+                            <div id="card-front" class="p-6 bg-gradient-to-br from-indigo-600 to-purple-700 rounded-2xl text-white text-center flex items-center justify-center" style="min-height:200px; backface-visibility:hidden;">
+                                <div>
+                                    <p class="text-xs font-bold opacity-70 mb-3 uppercase tracking-widest">Question</p>
+                                    <p class="font-black text-xl" id="card-question-text">Loading...</p>
+                                    <p class="text-xs opacity-60 mt-4">Tap to reveal answer</p>
+                                </div>
+                            </div>
+                            <div id="card-back" class="p-6 bg-gradient-to-br from-green-600 to-teal-700 rounded-2xl text-white text-center flex items-center justify-center" style="min-height:200px; backface-visibility:hidden; transform:rotateY(180deg); position:absolute; top:0; left:0; right:0;">
+                                <div>
+                                    <p class="text-xs font-bold opacity-70 mb-3 uppercase tracking-widest">Answer</p>
+                                    <p class="font-bold text-lg" id="card-answer-text">—</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="card-rating-btns" class="grid grid-cols-3 gap-2 mt-4" style="display:none!important;">
+                        <button onclick="rateCard('hard')" class="py-2 rounded-xl bg-red-100 text-red-700 font-bold text-sm">😓 Hard</button>
+                        <button onclick="rateCard('ok')" class="py-2 rounded-xl bg-yellow-100 text-yellow-700 font-bold text-sm">🤔 OK</button>
+                        <button onclick="rateCard('easy')" class="py-2 rounded-xl bg-green-100 text-green-700 font-bold text-sm">😊 Easy</button>
+                    </div>
+                </div>
+
+                <!-- Add New Card -->
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-plus text-green-500"></i> Create Flashcard</div>
+                    <select id="card-deck-select" class="input-field mb-3">
+                        <option value="finance-basics">💰 Finance Basics</option>
+                        <option value="productivity-hacks">⚡ Productivity Hacks</option>
+                        <option value="custom">+ Create New Deck</option>
+                    </select>
+                    <input id="card-question" class="input-field mb-3" placeholder="Question / Front of card">
+                    <textarea id="card-answer" class="textarea-field mb-3" placeholder="Answer / Back of card" style="min-height:80px;"></textarea>
+                    <button onclick="saveFlashcard()" class="btn-primary"><i class="fa-solid fa-plus mr-2"></i>Add Card</button>
+                </div>
+
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-chart-line text-green-500"></i> Study Stats</div>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="text-center p-3 bg-indigo-50 rounded-xl">
+                            <p class="text-2xl font-black text-indigo-600" id="cards-studied-today">0</p>
+                            <p class="text-xs font-bold text-indigo-800">Today</p>
+                        </div>
+                        <div class="text-center p-3 bg-green-50 rounded-xl">
+                            <p class="text-2xl font-black text-green-600" id="cards-total-studied">0</p>
+                            <p class="text-xs font-bold text-green-800">Total</p>
+                        </div>
+                        <div class="text-center p-3 bg-purple-50 rounded-xl">
+                            <p class="text-2xl font-black text-purple-600" id="cards-accuracy">0%</p>
+                            <p class="text-xs font-bold text-purple-800">Accuracy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </main>
         
         <button onclick="scrollToTop()" class="fab-button">
@@ -3649,65 +4164,194 @@
             </div>
         </header>
 
-        <main class="p-5 -mt-6">
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-piggy-bank text-green-500"></i>
-                    Money Saved Today
-                </div>
-                <div class="grid grid-cols-2 gap-3">
-                    <input id="savings-amount" class="input-field" type="number" placeholder="Amount">
-                    <select id="savings-category" class="input-field">
-                        <option value="emergency">Emergency Fund</option>
-                        <option value="investment">Investment</option>
-                        <option value="goal">Savings Goal</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <textarea id="savings-notes" class="textarea-field mt-3" placeholder="What did I save for?"></textarea>
-                <button onclick="logSavings()" class="btn-primary mt-4">Log Savings</button>
+        <div class="sticky top-0 z-10 bg-white px-5 pt-4 pb-2 -mt-6">
+            <div class="flex gap-2 overflow-x-auto pb-2" style="scrollbar-width: none;">
+                <button class="gym-tab active" onclick="switchFinanceTab('savings')" id="finance-tab-savings"><i class="fa-solid fa-piggy-bank"></i> Savings</button>
+                <button class="gym-tab" onclick="switchFinanceTab('budget')" id="finance-tab-budget"><i class="fa-solid fa-wallet"></i> Budget</button>
+                <button class="gym-tab" onclick="switchFinanceTab('expenses')" id="finance-tab-expenses"><i class="fa-solid fa-receipt"></i> Expenses</button>
+                <button class="gym-tab" onclick="switchFinanceTab('income')" id="finance-tab-income"><i class="fa-solid fa-arrow-trend-up"></i> Income</button>
+                <button class="gym-tab" onclick="switchFinanceTab('wisdom')" id="finance-tab-wisdom"><i class="fa-solid fa-chart-line"></i> Wisdom</button>
+                <button class="gym-tab" onclick="switchFinanceTab('log')" id="finance-tab-log"><i class="fa-solid fa-history"></i> Log</button>
             </div>
+        </div>
 
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-chart-line text-emerald-500"></i>
-                    Financial Wisdom
-                </div>
-                <div class="space-y-2 text-sm">
-                    <div class="tip-card">
-                        <p class="font-bold text-amber-800 mb-1">Pay Yourself First</p>
-                        <p class="text-xs text-amber-900">Save before you spend. Automate 10-20% to savings.</p>
+        <main class="p-5">
+            <!-- Savings Tab -->
+            <div id="finance-savings-content" class="gym-tab-content">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-piggy-bank text-green-500"></i> Money Saved Today</div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <input id="savings-amount" class="input-field" type="number" placeholder="Amount">
+                        <select id="savings-category" class="input-field">
+                            <option value="emergency">Emergency Fund</option>
+                            <option value="investment">Investment</option>
+                            <option value="goal">Savings Goal</option>
+                            <option value="other">Other</option>
+                        </select>
                     </div>
-                    <div class="tip-card">
-                        <p class="font-bold text-amber-800 mb-1">50/30/20 Rule</p>
-                        <p class="text-xs text-amber-900">50% needs, 30% wants, 20% savings & debt.</p>
-                    </div>
-                    <div class="tip-card">
-                        <p class="font-bold text-amber-800 mb-1">Avoid Lifestyle Inflation</p>
-                        <p class="text-xs text-amber-900">When income rises, save the difference, don't spend it all.</p>
-                    </div>
-                    <div class="tip-card">
-                        <p class="font-bold text-amber-800 mb-1">Invest for Long-Term</p>
-                        <p class="text-xs text-amber-900">Time in the market beats timing the market.</p>
-                    </div>
+                    <textarea id="savings-notes" class="textarea-field mt-3" placeholder="What did I save for?"></textarea>
+                    <button onclick="logSavings()" class="btn-primary mt-4">Log Savings</button>
                 </div>
             </div>
 
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-book-open text-green-600"></i>
-                    Financial Learning
+            <!-- Wisdom Tab -->
+            <div id="finance-wisdom-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-chart-line text-emerald-500"></i> Financial Wisdom</div>
+                    <div class="space-y-2 text-sm">
+                        <div class="tip-card"><p class="font-bold text-amber-800 mb-1">Pay Yourself First</p><p class="text-xs text-amber-900">Save before you spend. Automate 10-20% to savings.</p></div>
+                        <div class="tip-card"><p class="font-bold text-amber-800 mb-1">50/30/20 Rule</p><p class="text-xs text-amber-900">50% needs, 30% wants, 20% savings & debt.</p></div>
+                        <div class="tip-card"><p class="font-bold text-amber-800 mb-1">Avoid Lifestyle Inflation</p><p class="text-xs text-amber-900">When income rises, save the difference, don't spend it all.</p></div>
+                        <div class="tip-card"><p class="font-bold text-amber-800 mb-1">Invest for Long-Term</p><p class="text-xs text-amber-900">Time in the market beats timing the market.</p></div>
+                    </div>
                 </div>
-                <textarea id="finance-learning" class="textarea-field" placeholder="What did I learn about money today? Books, podcasts, insights..."></textarea>
-                <button onclick="saveFinanceLearning()" class="btn-primary mt-4">Save Learning</button>
             </div>
 
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-history text-slate-500"></i>
-                    Finance Log
+            <!-- Budget Planner Tab -->
+            <div id="finance-budget-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-wallet text-blue-500"></i> Monthly Budget Planner</div>
+                    <p class="text-sm text-slate-600 mb-3">Set spending limits for each category</p>
+                    <div class="mb-3">
+                        <label class="text-xs font-bold text-slate-500 block mb-1">💵 Monthly Income (₦)</label>
+                        <input id="budget-income" class="input-field" type="number" placeholder="e.g. 150000">
+                    </div>
+                    <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Budget Allocations</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm w-28 font-bold text-slate-700">🏠 Housing</span>
+                            <input id="budget-housing" class="input-field flex-1" type="number" placeholder="₦">
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm w-28 font-bold text-slate-700">🍔 Food</span>
+                            <input id="budget-food" class="input-field flex-1" type="number" placeholder="₦">
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm w-28 font-bold text-slate-700">🚗 Transport</span>
+                            <input id="budget-transport" class="input-field flex-1" type="number" placeholder="₦">
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm w-28 font-bold text-slate-700">📱 Utilities</span>
+                            <input id="budget-utilities" class="input-field flex-1" type="number" placeholder="₦">
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm w-28 font-bold text-slate-700">🎉 Lifestyle</span>
+                            <input id="budget-lifestyle" class="input-field flex-1" type="number" placeholder="₦">
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm w-28 font-bold text-slate-700">💰 Savings</span>
+                            <input id="budget-savings" class="input-field flex-1" type="number" placeholder="₦">
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm w-28 font-bold text-slate-700">📚 Education</span>
+                            <input id="budget-education" class="input-field flex-1" type="number" placeholder="₦">
+                        </div>
+                    </div>
+                    <button onclick="saveBudget()" class="btn-primary">💾 Save Budget</button>
                 </div>
-                <div id="finance-entries"></div>
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-chart-pie text-indigo-500"></i> Budget vs Spent</div>
+                    <div id="budget-vs-spent" class="space-y-3">
+                        <p class="text-sm text-slate-400 text-center py-4">Save a budget to see your progress</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Expenses Tracker Tab -->
+            <div id="finance-expenses-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-receipt text-red-500"></i> Log Expense</div>
+                    <div class="grid grid-cols-2 gap-3 mb-3">
+                        <input id="expense-amount" class="input-field" type="number" placeholder="Amount (₦)">
+                        <select id="expense-category" class="input-field">
+                            <option value="food">🍔 Food</option>
+                            <option value="transport">🚗 Transport</option>
+                            <option value="housing">🏠 Housing</option>
+                            <option value="utilities">📱 Utilities</option>
+                            <option value="lifestyle">🎉 Lifestyle</option>
+                            <option value="education">📚 Education</option>
+                            <option value="health">❤️ Health</option>
+                            <option value="other">📦 Other</option>
+                        </select>
+                    </div>
+                    <input id="expense-description" class="input-field mb-3" placeholder="What was it for? (e.g. Lunch at office)">
+                    <input id="expense-date" class="input-field mb-3" type="date">
+                    <button onclick="logExpense()" class="btn-primary">➕ Add Expense</button>
+                </div>
+
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-fire text-orange-500"></i> This Month's Spending</div>
+                    <div class="grid grid-cols-2 gap-3 mb-4">
+                        <div class="text-center p-3 bg-red-50 rounded-xl">
+                            <p class="text-2xl font-black text-red-600" id="total-spent-month">₦0</p>
+                            <p class="text-xs font-bold text-red-800">Total Spent</p>
+                        </div>
+                        <div class="text-center p-3 bg-green-50 rounded-xl">
+                            <p class="text-2xl font-black text-green-600" id="avg-daily-spend">₦0</p>
+                            <p class="text-xs font-bold text-green-800">Daily Average</p>
+                        </div>
+                    </div>
+                    <div id="expense-by-category" class="space-y-2 mb-3"></div>
+                </div>
+
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-list text-slate-500"></i> Recent Expenses</div>
+                    <div id="expenses-list" class="space-y-2">
+                        <p class="text-sm text-slate-400 text-center py-4">No expenses logged yet</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Income Tracker Tab -->
+            <div id="finance-income-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-arrow-trend-up text-green-500"></i> Log Income</div>
+                    <div class="grid grid-cols-2 gap-3 mb-3">
+                        <input id="income-amount" class="input-field" type="number" placeholder="Amount (₦)">
+                        <select id="income-source" class="input-field">
+                            <option value="salary">💼 Salary</option>
+                            <option value="freelance">💻 Freelance</option>
+                            <option value="business">🚀 Business</option>
+                            <option value="investment">📈 Investment</option>
+                            <option value="gift">🎁 Gift</option>
+                            <option value="side-hustle">⚡ Side Hustle</option>
+                            <option value="other">📦 Other</option>
+                        </select>
+                    </div>
+                    <input id="income-description" class="input-field mb-3" placeholder="Description (e.g. January salary)">
+                    <input id="income-date" class="input-field mb-3" type="date">
+                    <button onclick="logIncome()" class="btn-primary">➕ Add Income</button>
+                </div>
+
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-chart-bar text-green-500"></i> Income Summary</div>
+                    <div class="grid grid-cols-2 gap-3 mb-4">
+                        <div class="text-center p-3 bg-green-50 rounded-xl">
+                            <p class="text-2xl font-black text-green-600" id="total-income-month">₦0</p>
+                            <p class="text-xs font-bold text-green-800">This Month</p>
+                        </div>
+                        <div class="text-center p-3 bg-blue-50 rounded-xl">
+                            <p class="text-2xl font-black text-blue-600" id="net-balance-month">₦0</p>
+                            <p class="text-xs font-bold text-blue-800">Net Balance</p>
+                        </div>
+                    </div>
+                    <div id="income-by-source" class="space-y-2"></div>
+                </div>
+
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-list text-slate-500"></i> Income History</div>
+                    <div id="income-list" class="space-y-2">
+                        <p class="text-sm text-slate-400 text-center py-4">No income logged yet</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Log Tab -->
+            <div id="finance-log-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-history text-slate-500"></i> Finance Log</div>
+                    <div id="finance-entries"></div>
+                </div>
             </div>
         </main>
         
@@ -3735,88 +4379,74 @@
             </div>
         </header>
 
-        <main class="p-5 -mt-6">
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-list-check text-indigo-500"></i>
-                    Today's Top 3 Priorities
-                </div>
-                <input id="priority-1" class="input-field mb-3" placeholder="Priority #1 (Most Important)">
-                <input id="priority-2" class="input-field mb-3" placeholder="Priority #2">
-                <input id="priority-3" class="input-field mb-3" placeholder="Priority #3">
-                <button onclick="savePriorities()" class="btn-primary">Set Priorities</button>
+        <div class="sticky top-0 z-10 bg-white px-5 pt-4 pb-2 -mt-6">
+            <div class="flex gap-2 overflow-x-auto pb-2" style="scrollbar-width: none;">
+                <button class="gym-tab active" onclick="switchProductivityTab('priorities')" id="productivity-tab-priorities"><i class="fa-solid fa-list-check"></i> Priorities</button>
+                <button class="gym-tab" onclick="switchProductivityTab('timer')" id="productivity-tab-timer"><i class="fa-solid fa-stopwatch"></i> Timer</button>
+                <button class="gym-tab" onclick="switchProductivityTab('deepwork')" id="productivity-tab-deepwork"><i class="fa-solid fa-brain"></i> Deep Work</button>
+                <button class="gym-tab" onclick="switchProductivityTab('stats')" id="productivity-tab-stats"><i class="fa-solid fa-chart-simple"></i> Stats</button>
             </div>
+        </div>
 
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-stopwatch text-orange-500"></i>
-                    Pomodoro Timer
+        <main class="p-5">
+            <!-- Priorities Tab -->
+            <div id="productivity-priorities-content" class="gym-tab-content">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-list-check text-indigo-500"></i> Today's Top 3 Priorities</div>
+                    <input id="priority-1" class="input-field mb-3" placeholder="Priority #1 (Most Important)">
+                    <input id="priority-2" class="input-field mb-3" placeholder="Priority #2">
+                    <input id="priority-3" class="input-field mb-3" placeholder="Priority #3">
+                    <button onclick="savePriorities()" class="btn-primary">Set Priorities</button>
                 </div>
-                <div class="text-center mb-4">
-                    <p class="text-5xl font-black text-indigo-600" id="timer-display">25:00</p>
-                    <p class="text-xs text-slate-500 font-bold mt-2" id="timer-status">Ready to focus</p>
-                </div>
-                <div class="grid grid-cols-2 gap-3">
-                    <button onclick="startPomodoro()" class="btn-primary" id="start-btn">Start Focus</button>
-                    <button onclick="resetPomodoro()" class="btn-primary" style="background: #e2e8f0; color: #64748b;">Reset</button>
-                </div>
-            </div>
-
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-brain text-purple-500"></i>
-                    Deep Work Session
-                </div>
-                <input id="deep-work-task" class="input-field mb-3" placeholder="What did you work on?">
-                <input id="deep-work-duration" class="input-field mb-3" type="number" placeholder="Minutes of deep work">
-                <textarea id="deep-work-notes" class="textarea-field" placeholder="What did you accomplish?"></textarea>
-                <button onclick="logDeepWork()" class="btn-primary mt-4">Log Session</button>
-            </div>
-
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-lightbulb text-yellow-500"></i>
-                    Productivity Principles
-                </div>
-                <div class="space-y-2 text-sm">
-                    <div class="tip-card">
-                        <p class="font-bold text-amber-800 mb-1">Eat the Frog</p>
-                        <p class="text-xs text-amber-900">Do your hardest task first thing in the morning.</p>
-                    </div>
-                    <div class="tip-card">
-                        <p class="font-bold text-amber-800 mb-1">Time Blocking</p>
-                        <p class="text-xs text-amber-900">Schedule specific blocks for specific tasks. Protect that time.</p>
-                    </div>
-                    <div class="tip-card">
-                        <p class="font-bold text-amber-800 mb-1">Single-Tasking</p>
-                        <p class="text-xs text-amber-900">Multitasking is a myth. Focus on one thing at a time.</p>
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-lightbulb text-yellow-500"></i> Productivity Principles</div>
+                    <div class="space-y-2 text-sm">
+                        <div class="tip-card"><p class="font-bold text-amber-800 mb-1">Eat the Frog</p><p class="text-xs text-amber-900">Do your hardest task first thing in the morning.</p></div>
+                        <div class="tip-card"><p class="font-bold text-amber-800 mb-1">Time Blocking</p><p class="text-xs text-amber-900">Schedule specific blocks for specific tasks. Protect that time.</p></div>
+                        <div class="tip-card"><p class="font-bold text-amber-800 mb-1">Single-Tasking</p><p class="text-xs text-amber-900">Multitasking is a myth. Focus on one thing at a time.</p></div>
                     </div>
                 </div>
             </div>
 
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-chart-simple text-slate-500"></i>
-                    Productivity Stats
-                </div>
-                <div class="grid grid-cols-2 gap-3">
-                    <div class="text-center p-3 bg-slate-50 rounded-xl">
-                        <p class="text-2xl font-black text-indigo-600" id="focus-sessions">0</p>
-                        <p class="text-xs text-slate-500 font-bold">Sessions Today</p>
+            <!-- Timer Tab -->
+            <div id="productivity-timer-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-stopwatch text-orange-500"></i> Pomodoro Timer</div>
+                    <div class="text-center mb-4">
+                        <p class="text-5xl font-black text-indigo-600" id="timer-display">25:00</p>
+                        <p class="text-xs text-slate-500 font-bold mt-2" id="timer-status">Ready to focus</p>
                     </div>
-                    <div class="text-center p-3 bg-slate-50 rounded-xl">
-                        <p class="text-2xl font-black text-indigo-600" id="focus-minutes">0</p>
-                        <p class="text-xs text-slate-500 font-bold">Minutes</p>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="startPomodoro()" class="btn-primary" id="start-btn">Start Focus</button>
+                        <button onclick="resetPomodoro()" class="btn-primary" style="background: #e2e8f0; color: #64748b;">Reset</button>
                     </div>
                 </div>
             </div>
 
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-list text-slate-500"></i>
-                    Focus Log
+            <!-- Deep Work Tab -->
+            <div id="productivity-deepwork-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-brain text-purple-500"></i> Deep Work Session</div>
+                    <input id="deep-work-task" class="input-field mb-3" placeholder="What did you work on?">
+                    <input id="deep-work-duration" class="input-field mb-3" type="number" placeholder="Minutes of deep work">
+                    <textarea id="deep-work-notes" class="textarea-field" placeholder="What did you accomplish?"></textarea>
+                    <button onclick="logDeepWork()" class="btn-primary mt-4">Log Session</button>
                 </div>
-                <div id="productivity-entries"></div>
+            </div>
+
+            <!-- Stats Tab -->
+            <div id="productivity-stats-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-chart-simple text-slate-500"></i> Productivity Stats</div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="text-center p-3 bg-slate-50 rounded-xl"><p class="text-2xl font-black text-indigo-600" id="focus-sessions">0</p><p class="text-xs text-slate-500 font-bold">Sessions Today</p></div>
+                        <div class="text-center p-3 bg-slate-50 rounded-xl"><p class="text-2xl font-black text-indigo-600" id="focus-minutes">0</p><p class="text-xs text-slate-500 font-bold">Minutes</p></div>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-list text-slate-500"></i> Focus Log</div>
+                    <div id="productivity-entries"></div>
+                </div>
             </div>
         </main>
         
@@ -4050,30 +4680,141 @@
 
     <!-- Gratitude View Page -->
     <div id="gratitude-view-view" class="page-view">
-        <header class="glass-header text-white p-8 shadow-2xl">
+        <header class="glass-header text-white p-8 shadow-2xl" style="background:linear-gradient(135deg,#be185d,#9f1239);">
             <div class="flex justify-between items-center mb-4">
                 <div class="flex items-center gap-3">
-                    <button onclick="navigateToPage('dashboard')" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center">
-                        <i class="fa-solid fa-arrow-left text-slate-300"></i>
+                    <button onclick="navigateToPage('dashboard')" class="w-10 h-10 rounded-full bg-rose-900 flex items-center justify-center">
+                        <i class="fa-solid fa-arrow-left text-rose-300"></i>
                     </button>
                     <div>
                         <h1 class="text-2xl font-black tracking-tighter" style="font-family: 'Archivo Black', sans-serif;">GRATITUDE</h1>
-                        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Your Blessings</p>
+                        <p class="text-[10px] text-rose-300 font-bold uppercase tracking-widest">Count Your Blessings</p>
                     </div>
                 </div>
                 <div class="w-10 h-10 rounded-full bg-rose-600 flex items-center justify-center">
                     <i class="fa-solid fa-heart"></i>
                 </div>
             </div>
+            <!-- Streak Banner -->
+            <div class="flex items-center justify-between bg-rose-900 rounded-2xl p-3">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🔥</span>
+                    <div>
+                        <p class="text-xs text-rose-300 font-bold">GRATITUDE STREAK</p>
+                        <p class="text-white font-black text-lg"><span id="gratitude-streak-count">0</span> days</p>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs text-rose-300">Total Entries</p>
+                    <p class="text-white font-black text-lg" id="gratitude-total-count">0</p>
+                </div>
+            </div>
         </header>
 
-        <main class="p-5 -mt-6">
-            <div class="content-card">
-                <div class="section-title">
-                    <i class="fa-solid fa-sparkles text-amber-500"></i>
-                    My Gratitude List
+        <div class="sticky top-0 z-10 bg-white px-5 pt-4 pb-2 -mt-6">
+            <div class="flex gap-2 overflow-x-auto pb-2" style="scrollbar-width: none;">
+                <button class="gym-tab active" onclick="switchGratitudeTab('daily')" id="gratitude-tab-daily"><i class="fa-solid fa-pen"></i> Daily</button>
+                <button class="gym-tab" onclick="switchGratitudeTab('jar')" id="gratitude-tab-jar"><i class="fa-solid fa-jar"></i> Jar</button>
+                <button class="gym-tab" onclick="switchGratitudeTab('highlights')" id="gratitude-tab-highlights"><i class="fa-solid fa-star"></i> Highlights</button>
+                <button class="gym-tab" onclick="switchGratitudeTab('history')" id="gratitude-tab-history"><i class="fa-solid fa-clock-rotate-left"></i> History</button>
+            </div>
+        </div>
+
+        <main class="p-5">
+            <!-- Daily Entry Tab -->
+            <div id="gratitude-daily-content" class="gym-tab-content">
+                <div class="content-card" style="background:linear-gradient(135deg,#fff1f2,#fce7f3);">
+                    <div class="section-title"><i class="fa-solid fa-sparkles text-rose-500"></i> 3 Things I'm Grateful For Today</div>
+                    <p class="text-xs text-slate-500 mb-4">Research shows daily gratitude rewires your brain for happiness.</p>
+                    <div class="space-y-3 mb-4">
+                        <div>
+                            <label class="text-xs font-bold text-rose-700 block mb-1">1️⃣ First blessing</label>
+                            <input id="gratitude-1" class="input-field" placeholder="I am grateful for...">
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-rose-700 block mb-1">2️⃣ Second blessing</label>
+                            <input id="gratitude-2" class="input-field" placeholder="I am grateful for...">
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-rose-700 block mb-1">3️⃣ Third blessing</label>
+                            <input id="gratitude-3" class="input-field" placeholder="I am grateful for...">
+                        </div>
+                    </div>
+                    <label class="text-xs font-bold text-rose-700 block mb-1">Category</label>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <button onclick="selectGratitudeCategory('people')" class="gratitude-cat-btn px-3 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-700 border-2 border-rose-200" data-cat="people">👥 People</button>
+                        <button onclick="selectGratitudeCategory('experiences')" class="gratitude-cat-btn px-3 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-700 border-2 border-rose-200" data-cat="experiences">✨ Experiences</button>
+                        <button onclick="selectGratitudeCategory('body')" class="gratitude-cat-btn px-3 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-700 border-2 border-rose-200" data-cat="body">💪 Body</button>
+                        <button onclick="selectGratitudeCategory('opportunities')" class="gratitude-cat-btn px-3 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-700 border-2 border-rose-200" data-cat="opportunities">🚪 Opportunities</button>
+                        <button onclick="selectGratitudeCategory('blessings')" class="gratitude-cat-btn px-3 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-700 border-2 border-rose-200" data-cat="blessings">🙏 Blessings</button>
+                    </div>
+                    <input type="hidden" id="gratitude-category-selected" value="blessings">
+                    <label class="text-xs font-bold text-rose-700 block mb-1">Today's mood (optional)</label>
+                    <div class="flex gap-3 mb-4">
+                        <span class="mood-emoji text-2xl cursor-pointer" data-mood="grateful" onclick="selectGratitudeMood(this)">🙏</span>
+                        <span class="mood-emoji text-2xl cursor-pointer" data-mood="joyful" onclick="selectGratitudeMood(this)">😊</span>
+                        <span class="mood-emoji text-2xl cursor-pointer" data-mood="peaceful" onclick="selectGratitudeMood(this)">😌</span>
+                        <span class="mood-emoji text-2xl cursor-pointer" data-mood="blessed" onclick="selectGratitudeMood(this)">✨</span>
+                        <span class="mood-emoji text-2xl cursor-pointer" data-mood="hopeful" onclick="selectGratitudeMood(this)">🌅</span>
+                    </div>
+                    <input type="hidden" id="gratitude-mood-selected" value="">
+                    <button onclick="saveGratitudeEntry()" class="btn-primary" style="background:linear-gradient(135deg,#be185d,#9f1239);">❤️ Save Gratitude</button>
                 </div>
-                <div id="gratitude-entries"></div>
+                <!-- Today's guided prompts -->
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-comment text-rose-400"></i> Today's Prompt</div>
+                    <div id="daily-gratitude-prompt" class="p-4 bg-rose-50 rounded-xl border border-rose-200">
+                        <p class="text-sm font-bold text-rose-800" id="gratitude-prompt-text">Loading prompt...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gratitude Jar Tab -->
+            <div id="gratitude-jar-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card text-center">
+                    <div class="text-6xl mb-3">🫙</div>
+                    <h3 class="font-black text-xl text-slate-800 mb-2">Your Gratitude Jar</h3>
+                    <p class="text-sm text-slate-500 mb-4">Every entry you save goes into the jar. Shake it to get a random blessing from your past!</p>
+                    <button onclick="shakeGratitudeJar()" class="btn-primary mb-4" style="background:linear-gradient(135deg,#be185d,#9f1239);">🫙 Shake the Jar!</button>
+                    <div id="jar-random-entry" class="hidden p-4 bg-gradient-to-br from-rose-50 to-pink-50 rounded-xl border-2 border-rose-200">
+                        <p class="text-xs font-bold text-rose-600 mb-2">A blessing from your past ❤️</p>
+                        <p id="jar-entry-text" class="text-slate-700 font-bold text-sm italic"></p>
+                        <p id="jar-entry-date" class="text-xs text-slate-400 mt-2"></p>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-chart-pie text-rose-500"></i> Gratitude by Category</div>
+                    <div id="gratitude-category-chart" class="space-y-2"></div>
+                </div>
+            </div>
+
+            <!-- Monthly Highlights Tab -->
+            <div id="gratitude-highlights-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-star text-amber-500"></i> Monthly Highlights Reel</div>
+                    <p class="text-xs text-slate-500 mb-3">Your most meaningful gratitudes from this month</p>
+                    <div id="monthly-highlights" class="space-y-3">
+                        <p class="text-sm text-slate-400 text-center py-4">Log gratitudes this month to see highlights</p>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-fire text-orange-500"></i> Streak Calendar</div>
+                    <div id="gratitude-streak-calendar" class="grid gap-1" style="grid-template-columns:repeat(7,1fr);"></div>
+                    <div class="flex items-center justify-end gap-2 mt-2">
+                        <div class="w-4 h-4 rounded bg-slate-100"></div><p class="text-xs text-slate-400">None</p>
+                        <div class="w-4 h-4 rounded bg-rose-300"></div><p class="text-xs text-slate-400">Done</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- History Tab -->
+            <div id="gratitude-history-content" class="gym-tab-content" style="display:none;">
+                <div class="content-card">
+                    <div class="section-title"><i class="fa-solid fa-clock-rotate-left text-slate-500"></i> Gratitude History</div>
+                    <div id="gratitude-entries" class="space-y-3">
+                        <p class="text-sm text-slate-400 text-center py-4">Your gratitude entries appear here</p>
+                    </div>
+                </div>
             </div>
         </main>
         
@@ -4652,15 +5393,6 @@ function loadAICoachPage() {
     displayPredictions();
 }
 
-// Update the navigateToPage function to load AI Coach data
-const originalNavigateToPage = navigateToPage;
-navigateToPage = function(page) {
-    originalNavigateToPage(page);
-    if (page === 'ai-coach') {
-        loadAICoachPage();
-    }
-};
-
 // Auto-refresh insights every 5 minutes
 setInterval(() => {
     if (currentView === 'ai-coach') {
@@ -5100,8 +5832,8 @@ setInterval(() => {
         </button>
     </div>
 
-    <!-- Earn/Withdrawal Page -->
-    <div id="earn-view" class="page-view">
+    <!-- Earn/Withdrawal Page (OLD DUPLICATE - hidden) -->
+    <div id="earn-rewards-view" class="page-view" style="display:none !important;">
         <header class="glass-header text-white p-8 shadow-2xl" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
             <div class="flex justify-between items-center mb-4">
                 <div class="flex items-center gap-3">
@@ -5309,7 +6041,7 @@ setInterval(() => {
     </div>
 
     <!-- Free Content Detail Page (for courses, ebooks, skills) -->
-    <div id="content-detail-view" class="page-view" style="display: none;">
+    <div id="content-detail-view" class="page-view">
         <header class="glass-header text-white p-8 shadow-2xl" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
             <div class="flex justify-between items-center mb-4">
                 <div class="flex items-center gap-3">
@@ -5430,7 +6162,7 @@ setInterval(() => {
     </div>
 
     <!-- Paid Content Payment Page -->
-    <div id="payment-view" class="page-view" style="display: none;">
+    <div id="payment-view" class="page-view">
         <header class="glass-header text-white p-8 shadow-2xl" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
             <div class="flex justify-between items-center mb-4">
                 <div class="flex items-center gap-3">
@@ -7556,8 +8288,6 @@ setInterval(() => {
 };
 
         function navigateToPage(page) {
-            if (!checkAuth() && page !== 'dashboard' && page !== 'profile') return;
-            
             // Check if trying to access admin dashboard
             if (page === 'admin-dashboard') {
                 const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
@@ -7608,6 +8338,7 @@ setInterval(() => {
             if (page === 'testimonies') loadTestimoniesPage();
             if (page === 'tracker') loadTrackerPage();
             if (page === 'dailydawnapp') loadDailyDawnAppPage();
+            if (page === 'ai-coach') loadAICoachPage();
 
             scrollToTop();
         }
@@ -8221,6 +8952,8 @@ setInterval(() => {
         function loadLearningPage() {
             const entries = JSON.parse(localStorage.getItem('learningEntries') || '[]');
             renderLearningEntries(entries);
+            // Pre-load micro lesson data so it's ready
+            loadMicroLesson();
         }
 
         function logReading() {
@@ -8314,6 +9047,11 @@ setInterval(() => {
         function loadFinancePage() {
             const entries = JSON.parse(localStorage.getItem('financeEntries') || '[]');
             renderFinanceEntries(entries);
+            // Pre-load expense date to today
+            const dateEl = document.getElementById('expense-date');
+            if (dateEl) dateEl.value = new Date().toISOString().split('T')[0];
+            const incomeDateEl = document.getElementById('income-date');
+            if (incomeDateEl) incomeDateEl.value = new Date().toISOString().split('T')[0];
         }
 
         function logSavings() {
@@ -8391,6 +9129,678 @@ setInterval(() => {
                     `;
                 }
             }).join('');
+        }
+
+        // =============================================
+        // NEW FINANCE FUNCTIONS: Budget, Expenses, Income
+        // =============================================
+
+        function logExpense() {
+            const amount = parseFloat(document.getElementById('expense-amount').value);
+            const category = document.getElementById('expense-category').value;
+            const description = document.getElementById('expense-description').value;
+            const date = document.getElementById('expense-date').value || new Date().toISOString().split('T')[0];
+            if (!amount || amount <= 0) { alert('Please enter a valid amount'); return; }
+            const expenses = JSON.parse(localStorage.getItem('expenseEntries') || '[]');
+            expenses.unshift({ id: Date.now(), amount, category, description, date, createdAt: new Date().toISOString() });
+            localStorage.setItem('expenseEntries', JSON.stringify(expenses));
+            document.getElementById('expense-amount').value = '';
+            document.getElementById('expense-description').value = '';
+            renderExpenses();
+            updateExpenseSummary();
+            addXP(5);
+            alert('✓ Expense logged!');
+        }
+
+        function renderExpenses() {
+            const expenses = JSON.parse(localStorage.getItem('expenseEntries') || '[]');
+            const container = document.getElementById('expenses-list');
+            if (!container) return;
+            if (expenses.length === 0) { container.innerHTML = '<p class="text-sm text-slate-400 text-center py-4">No expenses logged yet</p>'; return; }
+            const categoryEmojis = { food:'🍔', transport:'🚗', housing:'🏠', utilities:'📱', lifestyle:'🎉', education:'📚', health:'❤️', other:'📦' };
+            container.innerHTML = expenses.slice(0, 20).map(e => `
+                <div class="entry-item flex items-center justify-between">
+                    <div>
+                        <p class="font-bold text-slate-800 text-sm">${categoryEmojis[e.category]||'📦'} ${e.description || e.category}</p>
+                        <p class="text-xs text-slate-500">${e.category} • ${e.date}</p>
+                    </div>
+                    <p class="font-black text-red-600">₦${Number(e.amount).toLocaleString()}</p>
+                </div>
+            `).join('');
+        }
+
+        function updateExpenseSummary() {
+            const expenses = JSON.parse(localStorage.getItem('expenseEntries') || '[]');
+            const now = new Date();
+            const monthExpenses = expenses.filter(e => {
+                const d = new Date(e.date);
+                return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+            });
+            const total = monthExpenses.reduce((s, e) => s + Number(e.amount), 0);
+            const days = now.getDate();
+            const totalEl = document.getElementById('total-spent-month');
+            const avgEl = document.getElementById('avg-daily-spend');
+            if (totalEl) totalEl.textContent = '₦' + total.toLocaleString();
+            if (avgEl) avgEl.textContent = '₦' + Math.round(total / days).toLocaleString();
+            // By category
+            const catContainer = document.getElementById('expense-by-category');
+            if (!catContainer) return;
+            const categoryEmojis = { food:'🍔', transport:'🚗', housing:'🏠', utilities:'📱', lifestyle:'🎉', education:'📚', health:'❤️', other:'📦' };
+            const byCat = {};
+            monthExpenses.forEach(e => { byCat[e.category] = (byCat[e.category] || 0) + Number(e.amount); });
+            catContainer.innerHTML = Object.entries(byCat).sort((a,b)=>b[1]-a[1]).map(([cat, amt]) => {
+                const pct = total > 0 ? Math.round((amt/total)*100) : 0;
+                return `
+                    <div class="mb-2">
+                        <div class="flex justify-between items-center mb-1">
+                            <p class="text-xs font-bold text-slate-700">${categoryEmojis[cat]||'📦'} ${cat}</p>
+                            <p class="text-xs font-bold text-slate-600">₦${amt.toLocaleString()} (${pct}%)</p>
+                        </div>
+                        <div class="h-2 bg-slate-200 rounded-full overflow-hidden">
+                            <div class="h-full bg-red-400 rounded-full" style="width:${pct}%"></div>
+                        </div>
+                    </div>`;
+            }).join('');
+        }
+
+        function logIncome() {
+            const amount = parseFloat(document.getElementById('income-amount').value);
+            const source = document.getElementById('income-source').value;
+            const description = document.getElementById('income-description').value;
+            const date = document.getElementById('income-date').value || new Date().toISOString().split('T')[0];
+            if (!amount || amount <= 0) { alert('Please enter a valid amount'); return; }
+            const incomes = JSON.parse(localStorage.getItem('incomeEntries') || '[]');
+            incomes.unshift({ id: Date.now(), amount, source, description, date, createdAt: new Date().toISOString() });
+            localStorage.setItem('incomeEntries', JSON.stringify(incomes));
+            document.getElementById('income-amount').value = '';
+            document.getElementById('income-description').value = '';
+            renderIncomeList();
+            updateIncomeSummary();
+            addXP(10);
+            alert('✓ Income logged!');
+        }
+
+        function renderIncomeList() {
+            const incomes = JSON.parse(localStorage.getItem('incomeEntries') || '[]');
+            const container = document.getElementById('income-list');
+            if (!container) return;
+            if (incomes.length === 0) { container.innerHTML = '<p class="text-sm text-slate-400 text-center py-4">No income logged yet</p>'; return; }
+            const sourceEmojis = { salary:'💼', freelance:'💻', business:'🚀', investment:'📈', gift:'🎁', 'side-hustle':'⚡', other:'📦' };
+            container.innerHTML = incomes.slice(0, 20).map(e => `
+                <div class="entry-item flex items-center justify-between">
+                    <div>
+                        <p class="font-bold text-slate-800 text-sm">${sourceEmojis[e.source]||'💰'} ${e.description || e.source}</p>
+                        <p class="text-xs text-slate-500">${e.source} • ${e.date}</p>
+                    </div>
+                    <p class="font-black text-green-600">₦${Number(e.amount).toLocaleString()}</p>
+                </div>
+            `).join('');
+        }
+
+        function updateIncomeSummary() {
+            const incomes = JSON.parse(localStorage.getItem('incomeEntries') || '[]');
+            const expenses = JSON.parse(localStorage.getItem('expenseEntries') || '[]');
+            const now = new Date();
+            const filter = arr => arr.filter(e => { const d = new Date(e.date); return d.getMonth()===now.getMonth() && d.getFullYear()===now.getFullYear(); });
+            const totalIncome = filter(incomes).reduce((s,e)=>s+Number(e.amount),0);
+            const totalExpense = filter(expenses).reduce((s,e)=>s+Number(e.amount),0);
+            const net = totalIncome - totalExpense;
+            const incomeEl = document.getElementById('total-income-month');
+            const netEl = document.getElementById('net-balance-month');
+            if (incomeEl) incomeEl.textContent = '₦' + totalIncome.toLocaleString();
+            if (netEl) { netEl.textContent = '₦' + Math.abs(net).toLocaleString(); netEl.className = 'text-2xl font-black ' + (net >= 0 ? 'text-green-600' : 'text-red-600'); }
+            // By source
+            const srcContainer = document.getElementById('income-by-source');
+            if (!srcContainer) return;
+            const bySrc = {};
+            filter(incomes).forEach(e => { bySrc[e.source] = (bySrc[e.source]||0) + Number(e.amount); });
+            const sourceEmojis = { salary:'💼', freelance:'💻', business:'🚀', investment:'📈', gift:'🎁', 'side-hustle':'⚡', other:'📦' };
+            srcContainer.innerHTML = Object.entries(bySrc).sort((a,b)=>b[1]-a[1]).map(([src,amt])=>`
+                <div class="flex items-center justify-between p-2 bg-green-50 rounded-lg mb-2">
+                    <p class="text-sm font-bold text-slate-700">${sourceEmojis[src]||'💰'} ${src}</p>
+                    <p class="text-sm font-black text-green-600">₦${amt.toLocaleString()}</p>
+                </div>
+            `).join('');
+        }
+
+        function saveBudget() {
+            const budget = {
+                income: parseFloat(document.getElementById('budget-income').value)||0,
+                housing: parseFloat(document.getElementById('budget-housing').value)||0,
+                food: parseFloat(document.getElementById('budget-food').value)||0,
+                transport: parseFloat(document.getElementById('budget-transport').value)||0,
+                utilities: parseFloat(document.getElementById('budget-utilities').value)||0,
+                lifestyle: parseFloat(document.getElementById('budget-lifestyle').value)||0,
+                savings: parseFloat(document.getElementById('budget-savings').value)||0,
+                education: parseFloat(document.getElementById('budget-education').value)||0,
+                month: new Date().toISOString().substring(0,7)
+            };
+            localStorage.setItem('monthlyBudget', JSON.stringify(budget));
+            renderBudgetVsSpent();
+            alert('✓ Budget saved!');
+        }
+
+        function loadBudgetForm() {
+            const budget = JSON.parse(localStorage.getItem('monthlyBudget') || 'null');
+            if (!budget) return;
+            const fields = ['income','housing','food','transport','utilities','lifestyle','savings','education'];
+            fields.forEach(f => { const el = document.getElementById('budget-'+f); if (el && budget[f]) el.value = budget[f]; });
+        }
+
+        function renderBudgetVsSpent() {
+            const budget = JSON.parse(localStorage.getItem('monthlyBudget') || 'null');
+            const container = document.getElementById('budget-vs-spent');
+            if (!container) return;
+            if (!budget) { container.innerHTML = '<p class="text-sm text-slate-400 text-center py-4">Save a budget to see your progress</p>'; return; }
+            const expenses = JSON.parse(localStorage.getItem('expenseEntries') || '[]');
+            const now = new Date();
+            const monthExp = expenses.filter(e => { const d = new Date(e.date); return d.getMonth()===now.getMonth() && d.getFullYear()===now.getFullYear(); });
+            const spent = {};
+            monthExp.forEach(e => { spent[e.category] = (spent[e.category]||0) + Number(e.amount); });
+            const cats = ['housing','food','transport','utilities','lifestyle','savings','education'];
+            const catEmojis = { housing:'🏠', food:'🍔', transport:'🚗', utilities:'📱', lifestyle:'🎉', savings:'💰', education:'📚' };
+            container.innerHTML = cats.filter(c => budget[c]>0).map(cat => {
+                const b = budget[cat]; const s = spent[cat]||0;
+                const pct = Math.min(100, Math.round((s/b)*100));
+                const over = s > b;
+                return `
+                    <div class="mb-3">
+                        <div class="flex justify-between items-center mb-1">
+                            <p class="text-xs font-bold text-slate-700">${catEmojis[cat]} ${cat}</p>
+                            <p class="text-xs font-bold ${over?'text-red-600':'text-green-600'}">₦${s.toLocaleString()} / ₦${b.toLocaleString()}</p>
+                        </div>
+                        <div class="h-2 bg-slate-200 rounded-full overflow-hidden">
+                            <div class="h-full ${over?'bg-red-500':'bg-green-500'} rounded-full transition-all" style="width:${pct}%"></div>
+                        </div>
+                        <p class="text-[10px] text-slate-500 mt-1">${over?'⚠️ Over budget by ₦'+(s-b).toLocaleString():'✓ ₦'+(b-s).toLocaleString()+' remaining'}</p>
+                    </div>`;
+            }).join('');
+        }
+
+        // =============================================
+        // NEW LEARNING FUNCTIONS: Micro-Lessons
+        // =============================================
+        const microLessonsData = {
+            finance: [
+                { title: 'The Power of Compound Interest', content: 'Compound interest is earning interest on your interest. ₦100k at 15% for 20 years becomes ₦1.6M without adding a single naira. Start early, stay consistent.', takeaway: 'Even small amounts invested young outperform large amounts invested late.' },
+                { title: 'Emergency Fund First', content: 'Before investing, build 3–6 months of expenses as an emergency fund. Without it, one crisis wipes out years of progress. Keep it in a high-yield savings account.', takeaway: 'Your emergency fund is insurance for your financial plan.' },
+                { title: 'The 50/30/20 Budget Rule', content: 'Split your income: 50% for needs (rent, food, bills), 30% for wants (fun, dining out), 20% for savings and debt repayment. Simple and flexible for any income level.', takeaway: 'A budget tells your money where to go instead of wondering where it went.' }
+            ],
+            mindset: [
+                { title: 'The Growth Mindset', content: 'Carol Dweck\'s research shows people with a growth mindset believe abilities can be developed through dedication. They embrace challenges, persist through setbacks, and see effort as the path to mastery.', takeaway: 'Your brain is a muscle — it grows stronger the more you use it.' },
+                { title: 'Reframing Failure', content: 'Every failure contains data. Instead of "I failed," ask "What did this teach me?" Thomas Edison didn\'t fail 10,000 times — he found 10,000 ways that didn\'t work. Reframe failure as feedback.', takeaway: 'Failure is not the opposite of success; it\'s part of the journey to success.' },
+                { title: 'Delayed Gratification', content: 'The Stanford Marshmallow Experiment showed children who resisted eating one marshmallow immediately received two later. Those who waited had better life outcomes. Training patience compounds over time.', takeaway: 'Every time you delay gratification, you\'re investing in your future self.' }
+            ],
+            productivity: [
+                { title: 'Eat the Frog', content: 'Mark Twain said if you eat a frog first thing in the morning, the rest of your day will be great. Do your most important — often hardest — task first. Once done, everything else feels easy.', takeaway: 'Tackle your biggest challenge before checking your phone.' },
+                { title: 'The Two-Minute Rule', content: 'If a task takes less than 2 minutes, do it immediately. Don\'t add it to your list, don\'t schedule it. Reply to that message, file that document, make that call now. Clears mental clutter instantly.', takeaway: 'Small tasks done now prevent big backlogs later.' },
+                { title: 'Time Blocking', content: 'Instead of a to-do list, schedule tasks as calendar blocks. Protect those blocks fiercely. Research shows switching tasks costs 23 minutes of lost focus. Deep work requires dedicated, distraction-free time.', takeaway: 'What gets scheduled gets done.' }
+            ],
+            leadership: [
+                { title: 'Leadership vs Management', content: 'Managers tell people what to do. Leaders inspire people to want to do it. The best leaders connect tasks to purpose, give autonomy, and invest in people\'s growth. You lead people; you manage systems.', takeaway: 'The goal of leadership is to make yourself unnecessary.' },
+                { title: 'Active Listening', content: 'Most people listen to respond, not to understand. Active listening means full presence — no phone, no planning your reply. Ask clarifying questions. Reflect back what you heard. People will trust and follow someone who truly listens.', takeaway: 'You have two ears and one mouth for a reason.' },
+                { title: 'Radical Candor', content: 'Kim Scott\'s framework: care personally + challenge directly. Honest feedback delivered with genuine care is the greatest gift you can give someone. "Nice" feedback that avoids truth is actually unkind.', takeaway: 'Say the hard thing early, kindly, before it becomes a crisis.' }
+            ],
+            health: [
+                { title: 'Sleep is a Superpower', content: 'Matthew Walker\'s research shows 7–9 hours of sleep improves memory consolidation, hormone regulation, immune function, and emotional resilience. Chronic under-sleeping accelerates ageing and disease.', takeaway: 'Sleep is not laziness — it\'s your highest performance tool.' },
+                { title: 'The 10,000 Steps Myth', content: 'The 10,000 steps goal came from a Japanese marketing campaign, not science. Research shows 7,500 steps significantly reduces mortality. But any movement is better than none — even 5 min walks reduce blood sugar spikes by 50%.', takeaway: 'Move more. Every step counts.' },
+                { title: 'Stress and the Body', content: 'Chronic stress elevates cortisol, which disrupts sleep, suppresses immunity, raises blood pressure, and promotes belly fat storage. 5 minutes of deep breathing (4 counts in, 6 out) activates the parasympathetic nervous system and reverses the stress response.', takeaway: 'Your breath is a direct remote control for your nervous system.' }
+            ],
+            tech: [
+                { title: 'How the Internet Works', content: 'When you visit a website, your browser sends a request to a DNS server, which translates the domain to an IP address. The server at that IP responds with data. This round trip can happen in under 100ms globally.', takeaway: 'Every website visit is a request-response cycle across the globe.' },
+                { title: 'What is AI Really?', content: 'Most modern AI (like ChatGPT) is a Large Language Model trained to predict the next word based on patterns in billions of text documents. It doesn\'t "know" things — it generates statistically likely responses. Understanding this helps you use AI better.', takeaway: 'AI is pattern matching at massive scale, not genuine intelligence.' },
+                { title: 'The Basics of Blockchain', content: 'A blockchain is a distributed ledger — a shared spreadsheet copied across thousands of computers. Each new entry (block) is cryptographically linked to the previous one. Changing any entry would break the chain, making it tamper-resistant.', takeaway: 'Blockchain\'s value is trust without a central authority.' }
+            ]
+        };
+
+        let currentMicroLesson = null;
+
+        function loadMicroLesson(category) {
+            const categories = Object.keys(microLessonsData);
+            const cat = category || categories[Math.floor(Math.random() * categories.length)];
+            const lessons = microLessonsData[cat] || microLessonsData.mindset;
+            const lesson = lessons[Math.floor(Math.random() * lessons.length)];
+            currentMicroLesson = { ...lesson, category: cat, loadedAt: new Date().toISOString() };
+            const catEl = document.getElementById('micro-lesson-category');
+            const titleEl = document.getElementById('micro-lesson-title');
+            const contentEl = document.getElementById('micro-lesson-content');
+            const takeawayEl = document.getElementById('micro-lesson-takeaway');
+            const catEmojis = { finance:'💰 Finance', mindset:'🧠 Mindset', productivity:'⚡ Productivity', leadership:'👑 Leadership', health:'❤️ Health', tech:'💻 Tech' };
+            if (catEl) catEl.textContent = catEmojis[cat] || cat;
+            if (titleEl) titleEl.textContent = lesson.title;
+            if (contentEl) contentEl.textContent = lesson.content;
+            if (takeawayEl) takeawayEl.textContent = lesson.takeaway;
+        }
+
+        function markMicroLessonDone() {
+            if (!currentMicroLesson) { alert('Load a lesson first!'); return; }
+            const history = JSON.parse(localStorage.getItem('microLessonsHistory') || '[]');
+            const today = new Date().toDateString();
+            const alreadyDoneToday = history.some(h => new Date(h.completedAt).toDateString() === today && h.title === currentMicroLesson.title);
+            if (alreadyDoneToday) { alert('You already completed this lesson today! Load a new one.'); return; }
+            history.unshift({ ...currentMicroLesson, completedAt: new Date().toISOString() });
+            localStorage.setItem('microLessonsHistory', JSON.stringify(history));
+            addXP(20);
+            updateMicroLessonStats();
+            renderMicroLessonsHistory();
+            alert('🎉 Lesson completed! +20 XP');
+            loadMicroLesson();
+        }
+
+        function updateMicroLessonStats() {
+            const history = JSON.parse(localStorage.getItem('microLessonsHistory') || '[]');
+            const now = new Date();
+            const thisWeek = history.filter(h => { const d = new Date(h.completedAt); const diff = (now - d) / (1000*60*60*24); return diff <= 7; });
+            // Streak calculation
+            let streak = 0;
+            const dates = [...new Set(history.map(h => new Date(h.completedAt).toDateString()))];
+            for (let i = 0; i < dates.length; i++) {
+                const d = new Date(dates[i]);
+                const expected = new Date(now); expected.setDate(expected.getDate() - i);
+                if (d.toDateString() === expected.toDateString()) streak++;
+                else break;
+            }
+            const streakEl = document.getElementById('micro-streak');
+            const totalEl = document.getElementById('micro-total');
+            const weekEl = document.getElementById('micro-this-week');
+            if (streakEl) streakEl.textContent = streak;
+            if (totalEl) totalEl.textContent = history.length;
+            if (weekEl) weekEl.textContent = thisWeek.length;
+        }
+
+        function renderMicroLessonsHistory() {
+            const history = JSON.parse(localStorage.getItem('microLessonsHistory') || '[]');
+            const container = document.getElementById('micro-lessons-history');
+            if (!container) return;
+            if (history.length === 0) { container.innerHTML = '<p class="text-sm text-slate-400 text-center py-4">Complete your first lesson to see history</p>'; return; }
+            const catEmojis = { finance:'💰', mindset:'🧠', productivity:'⚡', leadership:'👑', health:'❤️', tech:'💻' };
+            container.innerHTML = history.slice(0, 10).map(h => `
+                <div class="entry-item">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="text-xs font-bold text-indigo-600">${catEmojis[h.category]||'📚'} ${h.category?.toUpperCase()}</span>
+                        <span class="text-xs text-slate-400">${new Date(h.completedAt).toLocaleDateString()}</span>
+                    </div>
+                    <p class="font-bold text-sm text-slate-800">${h.title}</p>
+                    <p class="text-xs text-slate-500 italic mt-1">"${h.takeaway}"</p>
+                </div>
+            `).join('');
+        }
+
+        // =============================================
+        // NEW LEARNING FUNCTIONS: Book Notes
+        // =============================================
+        let currentNoteTags = [];
+
+        function addNoteTag() {
+            const input = document.getElementById('note-tag');
+            const tag = input.value.trim().toLowerCase();
+            if (!tag) return;
+            if (!currentNoteTags.includes(tag)) {
+                currentNoteTags.push(tag);
+                renderNoteTagsDisplay();
+            }
+            input.value = '';
+        }
+
+        function renderNoteTagsDisplay() {
+            const container = document.getElementById('note-tags-display');
+            if (!container) return;
+            container.innerHTML = currentNoteTags.map(t => `
+                <span class="inline-flex items-center gap-1 px-2 py-1 bg-indigo-100 text-indigo-700 rounded-lg text-xs font-bold">
+                    #${t} <span onclick="removeNoteTag('${t}')" class="cursor-pointer text-indigo-400 hover:text-red-500">×</span>
+                </span>
+            `).join('');
+        }
+
+        function removeNoteTag(tag) {
+            currentNoteTags = currentNoteTags.filter(t => t !== tag);
+            renderNoteTagsDisplay();
+        }
+
+        function saveBookNote() {
+            const bookTitle = document.getElementById('note-book-title').value.trim();
+            const author = document.getElementById('note-author').value.trim();
+            const page = document.getElementById('note-page').value;
+            const type = document.getElementById('note-type').value;
+            const content = document.getElementById('note-content').value.trim();
+            if (!bookTitle || !content) { alert('Please fill in book title and note content'); return; }
+            const notes = JSON.parse(localStorage.getItem('bookNotes') || '[]');
+            notes.unshift({ id: Date.now(), bookTitle, author, page, type, content, tags: [...currentNoteTags], createdAt: new Date().toISOString() });
+            localStorage.setItem('bookNotes', JSON.stringify(notes));
+            document.getElementById('note-book-title').value = '';
+            document.getElementById('note-author').value = '';
+            document.getElementById('note-page').value = '';
+            document.getElementById('note-content').value = '';
+            currentNoteTags = [];
+            renderNoteTagsDisplay();
+            renderBookNotes();
+            updateNotesStats();
+            addXP(10);
+            alert('✓ Note saved!');
+        }
+
+        function renderBookNotes(filter = 'all', searchTerm = '') {
+            let notes = JSON.parse(localStorage.getItem('bookNotes') || '[]');
+            if (filter !== 'all') notes = notes.filter(n => n.type === filter);
+            if (searchTerm) { const s = searchTerm.toLowerCase(); notes = notes.filter(n => n.bookTitle.toLowerCase().includes(s) || n.content.toLowerCase().includes(s) || (n.tags||[]).some(t=>t.includes(s))); }
+            const container = document.getElementById('book-notes-list');
+            if (!container) return;
+            if (notes.length === 0) { container.innerHTML = '<p class="text-sm text-slate-400 text-center py-4">No notes found</p>'; return; }
+            const typeEmojis = { insight:'💡', quote:'💬', action:'✅', question:'❓', summary:'📝' };
+            container.innerHTML = notes.slice(0, 20).map(n => `
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                    <div class="flex items-start justify-between mb-2">
+                        <div>
+                            <p class="font-black text-slate-900 text-sm">${n.bookTitle}</p>
+                            ${n.author ? `<p class="text-xs text-slate-500">by ${n.author}${n.page?' • p.'+n.page:''}</p>` : ''}
+                        </div>
+                        <span class="text-xs font-bold px-2 py-1 bg-white border rounded-lg text-slate-600">${typeEmojis[n.type]||'📝'} ${n.type}</span>
+                    </div>
+                    <p class="text-sm text-slate-700 leading-relaxed mb-2">${n.content}</p>
+                    ${n.tags && n.tags.length > 0 ? `<div class="flex flex-wrap gap-1">${n.tags.map(t=>`<span class="text-[10px] font-bold bg-indigo-100 text-indigo-600 px-2 py-0.5 rounded-full">#${t}</span>`).join('')}</div>` : ''}
+                    <p class="text-[10px] text-slate-400 mt-2">${new Date(n.createdAt).toLocaleDateString()}</p>
+                </div>
+            `).join('');
+        }
+
+        function filterNotes(type) {
+            ['all','insight','quote','action'].forEach(f => {
+                const btn = document.getElementById('notes-filter-'+f);
+                if (btn) btn.className = f === type ? 'px-3 py-1 rounded-lg text-xs font-bold bg-slate-900 text-white whitespace-nowrap' : 'px-3 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 whitespace-nowrap';
+            });
+            renderBookNotes(type);
+        }
+
+        function searchBookNotes() {
+            const term = document.getElementById('notes-search-input').value;
+            renderBookNotes('all', term);
+        }
+
+        function updateNotesStats() {
+            const notes = JSON.parse(localStorage.getItem('bookNotes') || '[]');
+            const now = new Date();
+            const thisWeek = notes.filter(n => (now - new Date(n.createdAt)) / (1000*60*60*24) <= 7);
+            const uniqueBooks = new Set(notes.map(n => n.bookTitle)).size;
+            const totalEl = document.getElementById('notes-total-count');
+            const booksEl = document.getElementById('notes-books-count');
+            const weekEl = document.getElementById('notes-this-week');
+            if (totalEl) totalEl.textContent = notes.length;
+            if (booksEl) booksEl.textContent = uniqueBooks;
+            if (weekEl) weekEl.textContent = thisWeek.length;
+        }
+
+        // =============================================
+        // NEW LEARNING FUNCTIONS: Learning Goals
+        // =============================================
+        function saveLearningGoal() {
+            const title = document.getElementById('lg-title').value.trim();
+            const category = document.getElementById('lg-category').value;
+            const timeframe = parseInt(document.getElementById('lg-timeframe').value);
+            const dailyTarget = parseInt(document.getElementById('lg-daily-target').value) || 30;
+            const why = document.getElementById('lg-why').value.trim();
+            if (!title) { alert('Please enter a learning goal'); return; }
+            const goals = JSON.parse(localStorage.getItem('learningGoals') || '[]');
+            const startDate = new Date();
+            const endDate = new Date(); endDate.setDate(endDate.getDate() + timeframe);
+            goals.unshift({ id: Date.now(), title, category, timeframe, dailyTarget, why, startDate: startDate.toISOString(), endDate: endDate.toISOString(), totalMinutes: 0, sessions: [], status: 'active' });
+            localStorage.setItem('learningGoals', JSON.stringify(goals));
+            document.getElementById('lg-title').value = '';
+            document.getElementById('lg-why').value = '';
+            document.getElementById('lg-daily-target').value = '';
+            renderLearningGoals();
+            populateLearningGoalSelect();
+            addXP(15);
+            alert('✓ Learning goal created!');
+        }
+
+        function renderLearningGoals() {
+            const goals = JSON.parse(localStorage.getItem('learningGoals') || '[]').filter(g => g.status === 'active');
+            const container = document.getElementById('learning-goals-list');
+            if (!container) return;
+            if (goals.length === 0) { container.innerHTML = '<p class="text-sm text-slate-400 text-center py-4">No learning goals yet. Create your first one!</p>'; return; }
+            const catEmojis = { language:'🌍', tech:'💻', finance:'💰', creative:'🎨', health:'❤️', business:'🚀', spiritual:'✝️', other:'📚' };
+            container.innerHTML = goals.map(g => {
+                const end = new Date(g.endDate);
+                const now = new Date();
+                const daysLeft = Math.max(0, Math.ceil((end - now) / (1000*60*60*24)));
+                const totalTargetMins = g.timeframe * g.dailyTarget;
+                const pct = Math.min(100, Math.round((g.totalMinutes / totalTargetMins) * 100));
+                return `
+                    <div class="p-4 bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl border-2 border-blue-200">
+                        <div class="flex items-start justify-between mb-2">
+                            <div>
+                                <span class="text-xs font-bold text-blue-600">${catEmojis[g.category]||'📚'} ${g.category}</span>
+                                <p class="font-black text-slate-900 text-base">${g.title}</p>
+                            </div>
+                            <span class="text-xs font-bold text-slate-500 bg-white px-2 py-1 rounded-lg border">${daysLeft}d left</span>
+                        </div>
+                        ${g.why ? `<p class="text-xs text-slate-500 italic mb-3">"${g.why}"</p>` : ''}
+                        <div class="mb-2">
+                            <div class="flex justify-between text-xs font-bold text-slate-600 mb-1">
+                                <span>${g.totalMinutes} min logged</span><span>${pct}% done</span>
+                            </div>
+                            <div class="h-2 bg-slate-200 rounded-full overflow-hidden">
+                                <div class="h-full bg-blue-500 rounded-full transition-all" style="width:${pct}%"></div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-500">Daily target: ${g.dailyTarget} min</p>
+                    </div>`;
+            }).join('');
+        }
+
+        function populateLearningGoalSelect() {
+            const goals = JSON.parse(localStorage.getItem('learningGoals') || '[]').filter(g => g.status === 'active');
+            const select = document.getElementById('lg-log-goal');
+            if (!select) return;
+            select.innerHTML = '<option value="">Select learning goal...</option>' + goals.map(g => `<option value="${g.id}">${g.title}</option>`).join('');
+        }
+
+        function logLearningGoalSession() {
+            const goalId = parseInt(document.getElementById('lg-log-goal').value);
+            const minutes = parseInt(document.getElementById('lg-log-minutes').value);
+            const notes = document.getElementById('lg-log-notes').value;
+            if (!goalId) { alert('Please select a goal'); return; }
+            if (!minutes || minutes <= 0) { alert('Please enter minutes practiced'); return; }
+            const goals = JSON.parse(localStorage.getItem('learningGoals') || '[]');
+            const idx = goals.findIndex(g => g.id === goalId);
+            if (idx === -1) return;
+            goals[idx].totalMinutes = (goals[idx].totalMinutes || 0) + minutes;
+            goals[idx].sessions = goals[idx].sessions || [];
+            goals[idx].sessions.unshift({ minutes, notes, date: new Date().toISOString() });
+            localStorage.setItem('learningGoals', JSON.stringify(goals));
+            document.getElementById('lg-log-minutes').value = '';
+            document.getElementById('lg-log-notes').value = '';
+            renderLearningGoals();
+            addXP(minutes / 5);
+            alert(`✓ ${minutes} minutes logged!`);
+        }
+
+        // =============================================
+        // NEW LEARNING FUNCTIONS: Flashcards
+        // =============================================
+        const builtInDecks = {
+            'finance-basics': {
+                name: '💰 Finance Basics', color: 'indigo',
+                cards: [
+                    { q: 'What is compound interest?', a: 'Earning interest on both your principal AND previously earned interest. The "8th wonder of the world" — it makes money grow exponentially over time.' },
+                    { q: 'What is the 50/30/20 budget rule?', a: '50% of income goes to Needs, 30% to Wants, and 20% to Savings & debt repayment.' },
+                    { q: 'What is an index fund?', a: 'A fund that tracks a market index (like the S&P 500). Low fees, diversified, outperforms most actively managed funds over 10+ years.' },
+                    { q: 'What is liquidity?', a: 'How quickly an asset can be converted to cash without losing value. Cash is most liquid. Real estate is least liquid.' },
+                    { q: 'What is net worth?', a: 'Total Assets minus Total Liabilities. What you own minus what you owe. The key metric for measuring financial health.' },
+                    { q: 'What is inflation?', a: 'The rate at which prices rise over time. At 10% inflation, ₦100 today buys only ₦90 worth of goods next year.' },
+                    { q: 'What is dollar-cost averaging?', a: 'Investing a fixed amount regularly regardless of price. Reduces the impact of market volatility over time.' },
+                    { q: 'What is an emergency fund?', a: '3–6 months of living expenses saved in an accessible account. Protects you from going into debt when unexpected costs arise.' },
+                    { q: 'What is diversification?', a: 'Spreading investments across different assets to reduce risk. "Don\'t put all your eggs in one basket."' },
+                    { q: 'What is ROI?', a: 'Return on Investment = (Gain - Cost) / Cost × 100%. Measures the efficiency or profitability of an investment.' }
+                ]
+            },
+            'productivity-hacks': {
+                name: '⚡ Productivity Hacks', color: 'green',
+                cards: [
+                    { q: 'What is the Pomodoro Technique?', a: 'Work focused for 25 minutes, then take a 5-minute break. After 4 rounds, take a 15–30 minute break. Improves focus and prevents burnout.' },
+                    { q: 'What is "Eat the Frog"?', a: 'Do your most important (hardest) task first thing in the morning. Gets the hardest part done when willpower is highest.' },
+                    { q: 'What is the Two-Minute Rule?', a: 'If a task takes less than 2 minutes, do it NOW instead of adding it to your list. Prevents small tasks from accumulating.' },
+                    { q: 'What is time blocking?', a: 'Scheduling specific chunks of time for specific tasks on your calendar. Protects deep work time and prevents reactive work.' },
+                    { q: 'What is the Eisenhower Matrix?', a: 'Categorize tasks by Urgent/Not Urgent and Important/Not Important. Focus on Important + Not Urgent to prevent crises.' },
+                    { q: 'What is deep work?', a: 'Cal Newport\'s concept: distraction-free concentration on cognitively demanding tasks. Produces output that creates real value.' },
+                    { q: 'What is a morning routine?', a: 'A consistent sequence of actions at the start of the day that sets the tone. Reduces decision fatigue and builds momentum.' },
+                    { q: 'What is the Pareto Principle (80/20 rule)?', a: '80% of results come from 20% of efforts. Identify and focus on the 20% of tasks that drive most of your outcomes.' }
+                ]
+            }
+        };
+
+        let studySession = { deckId: null, cards: [], currentIndex: 0, flipped: false, results: { easy: 0, ok: 0, hard: 0 } };
+
+        function renderFlashcardDecks() {
+            const customDecks = JSON.parse(localStorage.getItem('customFlashcardDecks') || '[]');
+            const container = document.getElementById('custom-decks-container');
+            if (!container) return;
+            container.innerHTML = customDecks.map(deck => `
+                <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-200 rounded-xl flex items-center justify-between cursor-pointer" onclick="startStudySession('${deck.id}')">
+                    <div>
+                        <p class="font-bold text-slate-800">${deck.name}</p>
+                        <p class="text-xs text-slate-500">${deck.cards.length} cards</p>
+                    </div>
+                    <button class="bg-purple-600 text-white px-3 py-1 rounded-lg text-xs font-bold">Study</button>
+                </div>
+            `).join('');
+            // Populate deck select
+            const deckSelect = document.getElementById('card-deck-select');
+            if (deckSelect) {
+                const customOptions = customDecks.map(d => `<option value="${d.id}">${d.name}</option>`).join('');
+                deckSelect.innerHTML = `<option value="finance-basics">💰 Finance Basics</option><option value="productivity-hacks">⚡ Productivity Hacks</option>${customOptions}<option value="custom">+ Create New Deck</option>`;
+            }
+        }
+
+        function startStudySession(deckId) {
+            let cards = [];
+            if (builtInDecks[deckId]) {
+                cards = builtInDecks[deckId].cards;
+            } else {
+                const customDecks = JSON.parse(localStorage.getItem('customFlashcardDecks') || '[]');
+                const deck = customDecks.find(d => d.id === deckId);
+                if (deck) cards = deck.cards;
+            }
+            if (cards.length === 0) { alert('No cards in this deck yet!'); return; }
+            // Shuffle
+            cards = [...cards].sort(() => Math.random() - 0.5);
+            studySession = { deckId, cards, currentIndex: 0, flipped: false, results: { easy: 0, ok: 0, hard: 0 } };
+            const studyArea = document.getElementById('flashcard-study-area');
+            if (studyArea) studyArea.style.display = 'block';
+            studyArea.scrollIntoView({ behavior: 'smooth' });
+            showCurrentCard();
+        }
+
+        function showCurrentCard() {
+            const card = studySession.cards[studySession.currentIndex];
+            if (!card) { endStudySession(); return; }
+            const qEl = document.getElementById('card-question-text');
+            const aEl = document.getElementById('card-answer-text');
+            const progressText = document.getElementById('card-progress-text');
+            const progressBar = document.getElementById('card-progress-bar');
+            const ratingBtns = document.getElementById('card-rating-btns');
+            const inner = document.getElementById('flashcard-inner');
+            if (qEl) qEl.textContent = card.q;
+            if (aEl) aEl.textContent = card.a;
+            if (progressText) progressText.textContent = `Card ${studySession.currentIndex + 1} of ${studySession.cards.length}`;
+            if (progressBar) progressBar.style.width = ((studySession.currentIndex + 1) / studySession.cards.length * 100) + '%';
+            // Reset flip
+            studySession.flipped = false;
+            if (inner) inner.style.transform = 'rotateY(0deg)';
+            if (ratingBtns) ratingBtns.style.display = 'none';
+        }
+
+        function flipCard() {
+            const inner = document.getElementById('flashcard-inner');
+            const ratingBtns = document.getElementById('card-rating-btns');
+            if (!studySession.flipped) {
+                if (inner) inner.style.transform = 'rotateY(180deg)';
+                if (ratingBtns) { ratingBtns.style.display = 'grid'; ratingBtns.style.removeProperty('display'); ratingBtns.style.cssText = 'display:grid!important; grid-template-columns:repeat(3,1fr); gap:0.5rem; margin-top:1rem;'; }
+                studySession.flipped = true;
+            }
+        }
+
+        function rateCard(difficulty) {
+            studySession.results[difficulty]++;
+            studySession.currentIndex++;
+            if (studySession.currentIndex >= studySession.cards.length) {
+                endStudySession();
+            } else {
+                showCurrentCard();
+            }
+        }
+
+        function endStudySession() {
+            const total = studySession.cards.length;
+            const { easy, ok, hard } = studySession.results;
+            // Save stats
+            const stats = JSON.parse(localStorage.getItem('flashcardStats') || '{"total":0,"easy":0,"ok":0,"hard":0,"sessions":[]}');
+            stats.total += total;
+            stats.easy += easy;
+            stats.ok += ok;
+            stats.hard += hard;
+            stats.sessions.unshift({ deckId: studySession.deckId, total, easy, ok, hard, date: new Date().toISOString() });
+            localStorage.setItem('flashcardStats', JSON.stringify(stats));
+            addXP(total * 2);
+            updateFlashcardStats();
+            const studyArea = document.getElementById('flashcard-study-area');
+            if (studyArea) studyArea.style.display = 'none';
+            alert(`🎉 Session complete!\n✅ ${easy} Easy  🤔 ${ok} OK  😓 ${hard} Hard\n\n+${total * 2} XP earned!`);
+        }
+
+        function closeStudySession() {
+            const studyArea = document.getElementById('flashcard-study-area');
+            if (studyArea) studyArea.style.display = 'none';
+            studySession = { deckId: null, cards: [], currentIndex: 0, flipped: false, results: { easy:0, ok:0, hard:0 } };
+        }
+
+        function saveFlashcard() {
+            const deckId = document.getElementById('card-deck-select').value;
+            const question = document.getElementById('card-question').value.trim();
+            const answer = document.getElementById('card-answer').value.trim();
+            if (!question || !answer) { alert('Please fill in both question and answer'); return; }
+            if (deckId === 'custom') {
+                const deckName = prompt('Enter a name for your new deck:');
+                if (!deckName) return;
+                const customDecks = JSON.parse(localStorage.getItem('customFlashcardDecks') || '[]');
+                const newDeck = { id: 'custom-' + Date.now(), name: deckName, cards: [{ q: question, a: answer }] };
+                customDecks.push(newDeck);
+                localStorage.setItem('customFlashcardDecks', JSON.stringify(customDecks));
+            } else {
+                // Add to custom deck if it exists
+                const customDecks = JSON.parse(localStorage.getItem('customFlashcardDecks') || '[]');
+                const deck = customDecks.find(d => d.id === deckId);
+                if (deck) { deck.cards.push({ q: question, a: answer }); localStorage.setItem('customFlashcardDecks', JSON.stringify(customDecks)); }
+                else { alert('Cards can only be added to custom decks currently. Create a new deck to add cards.'); return; }
+            }
+            document.getElementById('card-question').value = '';
+            document.getElementById('card-answer').value = '';
+            renderFlashcardDecks();
+            alert('✓ Flashcard saved!');
+        }
+
+        function updateFlashcardStats() {
+            const stats = JSON.parse(localStorage.getItem('flashcardStats') || '{"total":0,"easy":0,"ok":0,"hard":0,"sessions":[]}');
+            const today = new Date().toDateString();
+            const todaySessions = stats.sessions.filter(s => new Date(s.date).toDateString() === today);
+            const todayTotal = todaySessions.reduce((sum, s) => sum + s.total, 0);
+            const accuracy = stats.total > 0 ? Math.round((stats.easy / stats.total) * 100) : 0;
+            const todayEl = document.getElementById('cards-studied-today');
+            const totalEl = document.getElementById('cards-total-studied');
+            const accEl = document.getElementById('cards-accuracy');
+            if (todayEl) todayEl.textContent = todayTotal;
+            if (totalEl) totalEl.textContent = stats.total;
+            if (accEl) accEl.textContent = accuracy + '%';
+        }
+
+        function openCreateDeckModal() {
+            const name = prompt('Enter deck name (e.g. "🌍 Spanish Vocabulary"):');
+            if (!name) return;
+            const customDecks = JSON.parse(localStorage.getItem('customFlashcardDecks') || '[]');
+            customDecks.push({ id: 'custom-' + Date.now(), name, cards: [] });
+            localStorage.setItem('customFlashcardDecks', JSON.stringify(customDecks));
+            renderFlashcardDecks();
+            alert('✓ Deck "' + name + '" created! Add cards to it below.');
         }
 
         // Productivity functions
@@ -11419,6 +12829,63 @@ Keep recording your dreams to discover deeper patterns over time!
             if (tab === 'progress') loadProgressData();
         }
 
+        function switchMotivationTab(tab) {
+            document.querySelectorAll('[id^="motivation-tab-"]').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('motivation-tab-' + tab).classList.add('active');
+            document.querySelectorAll('[id^="motivation-"][id$="-content"]').forEach(c => c.style.display = 'none');
+            document.getElementById('motivation-' + tab + '-content').style.display = 'block';
+            if (tab === 'journal') { const entries = JSON.parse(localStorage.getItem('mindsetEntries') || '[]'); renderMindsetEntries(entries); }
+        }
+
+        function switchHabitsTab(tab) {
+            document.querySelectorAll('[id^="habits-tab-"]').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('habits-tab-' + tab).classList.add('active');
+            document.querySelectorAll('[id^="habits-"][id$="-content"]').forEach(c => c.style.display = 'none');
+            document.getElementById('habits-' + tab + '-content').style.display = 'block';
+            if (tab === 'today') { renderHabitsToday(); updateHabitStats(); }
+            if (tab === 'character') loadCharacterTraits();
+            if (tab === 'stats') updateHabitStats();
+        }
+
+        function switchGoalsTab(tab) {
+            document.querySelectorAll('[id^="goals-tab-"]').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('goals-tab-' + tab).classList.add('active');
+            document.querySelectorAll('[id^="goals-"][id$="-content"]').forEach(c => c.style.display = 'none');
+            document.getElementById('goals-' + tab + '-content').style.display = 'block';
+            if (tab === 'active') { const goals = JSON.parse(localStorage.getItem('goals') || '[]'); renderGoals(goals); }
+        }
+
+        function switchWellnessTab(tab) {
+            document.querySelectorAll('[id^="wellness-tab-"]').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('wellness-tab-' + tab).classList.add('active');
+            document.querySelectorAll('[id^="wellness-"][id$="-content"]').forEach(c => c.style.display = 'none');
+            document.getElementById('wellness-' + tab + '-content').style.display = 'block';
+            if (tab === 'water') updateWaterCount();
+            if (tab === 'log') { const entries = JSON.parse(localStorage.getItem('wellnessEntries') || '[]'); renderWellnessEntries(entries); }
+        }
+
+        function switchFinanceTab(tab) {
+            document.querySelectorAll('[id^="finance-tab-"]').forEach(btn => btn.classList.remove('active'));
+            const tabBtn = document.getElementById('finance-tab-' + tab);
+            if (tabBtn) tabBtn.classList.add('active');
+            document.querySelectorAll('[id^="finance-"][id$="-content"]').forEach(c => c.style.display = 'none');
+            const tabContent = document.getElementById('finance-' + tab + '-content');
+            if (tabContent) tabContent.style.display = 'block';
+            if (tab === 'log') { const entries = JSON.parse(localStorage.getItem('financeEntries') || '[]'); renderFinanceEntries(entries); }
+            if (tab === 'expenses') { renderExpenses(); updateExpenseSummary(); }
+            if (tab === 'income') { renderIncomeList(); updateIncomeSummary(); }
+            if (tab === 'budget') { loadBudgetForm(); renderBudgetVsSpent(); }
+        }
+
+        function switchProductivityTab(tab) {
+            document.querySelectorAll('[id^="productivity-tab-"]').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('productivity-tab-' + tab).classList.add('active');
+            document.querySelectorAll('[id^="productivity-"][id$="-content"]').forEach(c => c.style.display = 'none');
+            document.getElementById('productivity-' + tab + '-content').style.display = 'block';
+            if (tab === 'stats') { const entries = JSON.parse(localStorage.getItem('productivityEntries') || '[]'); renderProductivityEntries(entries); updateProductivityStats(entries); }
+            if (tab === 'priorities') loadSavedPriorities();
+        }
+
         function loadNutritionData() {
             const today = new Date().toDateString();
             const meals = JSON.parse(localStorage.getItem('meals') || '[]');
@@ -11931,37 +13398,19 @@ Keep recording your dreams to discover deeper patterns over time!
         let currentBookForProgress = null;
 
         function switchLearningTab(tab) {
-            // Update tab buttons
-            document.querySelectorAll('.learning-tab').forEach(btn => {
-                btn.classList.remove('active');
-            });
+            document.querySelectorAll('.learning-tab').forEach(btn => btn.classList.remove('active'));
             const tabButton = document.getElementById('learning-tab-' + tab);
-            if (tabButton) {
-                tabButton.classList.add('active');
-            }
-            
-            // Update content
-            document.querySelectorAll('.learning-tab-content').forEach(content => {
-                content.style.display = 'none';
-            });
+            if (tabButton) tabButton.classList.add('active');
+            document.querySelectorAll('.learning-tab-content').forEach(content => content.style.display = 'none');
             const tabContent = document.getElementById('learning-' + tab + '-content');
-            if (tabContent) {
-                tabContent.style.display = 'block';
-            }
-            
-            // Load data for specific tabs
-            if (tab === 'library') {
-                loadBookshelf();
-                updateReadingGoalDisplay();
-            } else if (tab === 'courses') {
-                // Load courses content
-                console.log('Courses tab loaded');
-            } else if (tab === 'ebooks') {
-                // Load ebooks content
-                console.log('Ebooks tab loaded');
-            } else if (tab === 'skills') {
-                renderLearningEntries();
-            }
+            if (tabContent) tabContent.style.display = 'block';
+
+            if (tab === 'library') { loadBookshelf(); updateReadingGoalDisplay(); }
+            else if (tab === 'skills') { renderLearningEntries(); }
+            else if (tab === 'microlessons') { loadMicroLesson(); updateMicroLessonStats(); }
+            else if (tab === 'booknotes') { renderBookNotes(); updateNotesStats(); }
+            else if (tab === 'learninggoals') { renderLearningGoals(); populateLearningGoalSelect(); }
+            else if (tab === 'flashcards') { renderFlashcardDecks(); updateFlashcardStats(); }
         }
 
         // Shop Tab Switching
@@ -12323,7 +13772,7 @@ In today's economy, a side hustle isn't just nice to have - it's essential. This
 
             // Navigate to detail page
             document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active'));
-            document.getElementById('content-detail-view').style.display = 'block';
+            document.getElementById('content-detail-view').classList.add('active');
             scrollToTop();
         }
 
@@ -12391,17 +13840,17 @@ In today's economy, a side hustle isn't just nice to have - it's essential. This
 
             // Navigate to payment page
             document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active'));
-            document.getElementById('payment-view').style.display = 'block';
+            document.getElementById('payment-view').classList.add('active');
             scrollToTop();
         }
 
         function goBackFromDetail() {
-            document.getElementById('content-detail-view').style.display = 'none';
+            document.getElementById('content-detail-view').classList.remove('active');
             navigateToPage('learning');
         }
 
         function goBackFromPayment() {
-            document.getElementById('payment-view').style.display = 'none';
+            document.getElementById('payment-view').classList.remove('active');
             navigateToPage('shop');
         }
 
@@ -13340,12 +14789,12 @@ In today's economy, a side hustle isn't just nice to have - it's essential. This
             
             <div class="content-card mb-4">
                 <div class="text-center py-4">
-                    <div id="payment-item-icon" class="w-20 h-20 mx-auto rounded-xl flex items-center justify-center text-3xl text-white mb-3 bg-gradient-to-br from-amber-500 to-orange-600">
+                    <div id="modal-payment-item-icon" class="w-20 h-20 mx-auto rounded-xl flex items-center justify-center text-3xl text-white mb-3 bg-gradient-to-br from-amber-500 to-orange-600">
                         <i class="fa-solid fa-shopping-bag"></i>
                     </div>
-                    <h4 id="payment-item-title" class="font-black text-xl text-slate-900 mb-2"></h4>
-                    <p id="payment-item-description" class="text-sm text-slate-600 mb-3"></p>
-                    <div class="text-3xl font-black text-amber-600" id="payment-item-price">₦0</div>
+                    <h4 id="modal-payment-item-title" class="font-black text-xl text-slate-900 mb-2"></h4>
+                    <p id="modal-payment-item-description" class="text-sm text-slate-600 mb-3"></p>
+                    <div class="text-3xl font-black text-amber-600" id="modal-payment-item-price">₦0</div>
                 </div>
             </div>
 
