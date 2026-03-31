@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1359,20 +1363,22 @@
 
             <!-- Daily Routine Checklist -->
             <div class="mb-6">
-                <div class="content-card">
-                    <div class="flex items-center gap-2 mb-3 justify-between">
+                <div class="content-card" style="padding: 1rem;">
+                    <div class="flex items-center gap-2 mb-2 justify-between">
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-list-check text-indigo-600 text-sm"></i>
                             <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Daily Routine</span>
                         </div>
-                        <span class="text-xs font-bold text-slate-600" id="routine-progress">0/0</span>
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs font-bold text-slate-600" id="routine-progress">0/0</span>
+                            <button onclick="resetDailyRoutine()" class="text-xs text-amber-600 font-bold">
+                                <i class="fa-solid fa-rotate-right"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="space-y-2" id="routine-checklist">
+                    <div class="grid grid-cols-2 gap-1" id="routine-checklist">
                         <!-- Routine items will be dynamically added here -->
                     </div>
-                    <button onclick="resetDailyRoutine()" class="text-xs text-amber-600 font-bold mt-3 w-full text-center">
-                        <i class="fa-solid fa-rotate-right"></i> Reset Today's Routine
-                    </button>
                 </div>
             </div>
 
@@ -7639,16 +7645,6 @@ setInterval(() => {
         </div>
     </div>
 
-    <!-- Footer -->
-    <div class="fixed bottom-24 left-0 right-0 pb-2 bg-gradient-to-t from-slate-100 via-slate-100 to-transparent z-40 max-w-md mx-auto">
-        <div class="text-center text-xs text-slate-500">
-            <p class="font-medium">
-                © 2026 DailyDawn | Built by 
-                <a href="https://instagram.com/daveaai" target="_blank" class="text-amber-600 font-bold hover:text-amber-700">Dave AI</a>
-            </p>
-        </div>
-    </div>
-
     <!-- Bottom Navigation -->
     <nav class="fixed bottom-6 left-6 right-6 bg-[#0f172a] rounded-3xl p-4 shadow-2xl z-50 max-w-md mx-auto">
         <div class="flex justify-around items-center text-slate-500">
@@ -7666,6 +7662,13 @@ setInterval(() => {
             </button>
         </div>
     </nav>
+
+    <!-- Footer -->
+    <div class="fixed bottom-0 left-0 right-0 text-center py-1 z-40 max-w-md mx-auto" style="bottom:0px;">
+        <p class="text-[10px] text-slate-400 font-medium">
+            © 2026 DailyDawn | Built by <a href="https://instagram.com/daveaai" target="_blank" class="text-amber-500 font-bold">Dave AI</a>
+        </p>
+    </div>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Prevent keyboard shortcuts for viewing source
@@ -10076,11 +10079,11 @@ setInterval(() => {
             progressDisplay.textContent = `${completed}/${total}`;
 
             container.innerHTML = routines.map(routine => `
-                <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200">
-                    <div class="habit-checkbox ${routine.checked ? 'checked' : ''}" onclick="toggleRoutine(${routine.id})">
-                        ${routine.checked ? '<i class="fa-solid fa-check text-white text-xs"></i>' : ''}
+                <div class="flex items-center gap-2 px-2 py-1.5 bg-slate-50 rounded-lg border border-slate-200 cursor-pointer" onclick="toggleRoutine(${routine.id})">
+                    <div class="habit-checkbox flex-shrink-0 ${routine.checked ? 'checked' : ''}" style="width:18px;height:18px;border-radius:5px;">
+                        ${routine.checked ? '<i class="fa-solid fa-check text-white" style="font-size:9px;"></i>' : ''}
                     </div>
-                    <span class="text-sm font-medium text-slate-700 ${routine.checked ? 'line-through text-slate-400' : ''}">${routine.text}</span>
+                    <span class="text-xs font-medium text-slate-700 ${routine.checked ? 'line-through text-slate-400' : ''}" style="line-height:1.3;">${routine.text}</span>
                 </div>
             `).join('');
         }
